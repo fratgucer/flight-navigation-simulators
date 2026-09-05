@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>Vor Obs Simulator</title>
+<title>Combined Vor Gps Cdi</title>
 <style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
 </head>
 <body>
-<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Vor Obs Simulator" srcdoc="&lt;!doctype html&gt;
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Combined Vor Gps Cdi" srcdoc="&lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
 &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
 &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
-&lt;title&gt;Vor Obs Simulator&lt;/title&gt;
+&lt;title&gt;Combined Vor Gps Cdi&lt;/title&gt;
 &lt;style&gt;:root {
   color-scheme: light dark;
   background-color: var(
@@ -989,342 +989,497 @@ html&gt;body{padding:0}&lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;style&gt;
-  #vor-obs-simulator {
+  #combined-cdi-simulator {
     width: 100%;
     color: var(--foreground);
   }
 
-  #vor-obs-simulator h2 {
-    margin: 0 0 10px;
+  #combined-cdi-simulator h2,
+  #combined-cdi-simulator h3,
+  #combined-cdi-simulator p {
+    margin: 0;
+  }
+
+  #combined-cdi-simulator h2,
+  #combined-cdi-simulator h3,
+  #combined-cdi-simulator .state-line {
     text-align: center;
   }
 
-  #vor-obs-simulator .state-line {
-    margin: 0 0 14px;
-    text-align: center;
-    font-weight: 500;
-  }
-
-  #vor-obs-simulator .visuals {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    align-items: start;
-  }
-
-  #vor-obs-simulator .visual-block {
-    min-width: 0;
-    text-align: center;
-  }
-
-  #vor-obs-simulator .visual-block h3 {
-    margin: 0 0 4px;
-  }
-
-  #vor-obs-simulator .diagram {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  #vor-obs-simulator .dial-face,
-  #vor-obs-simulator .map-face {
-    fill: color-mix(in srgb, var(--card) 82%, transparent);
-    stroke: var(--border);
-    stroke-width: 3;
-  }
-
-  #vor-obs-simulator .minor {
-    stroke: var(--muted-foreground);
-    stroke-width: 2;
-  }
-
-  #vor-obs-simulator .obs-line {
-    stroke: var(--blue);
-    stroke-width: 7;
-    stroke-linecap: round;
-  }
-
-  #vor-obs-simulator .radial-line {
-    stroke: var(--orange);
-    stroke-width: 6;
-    stroke-linecap: round;
-  }
-
-  #vor-obs-simulator .cdi-needle {
-    stroke: var(--purple);
-    stroke-width: 9;
-    stroke-linecap: round;
-    transition: transform 160ms ease;
-  }
-
-  #vor-obs-simulator .vor-ring,
-  #vor-obs-simulator .aircraft-ring {
-    fill: var(--card);
-    stroke: var(--foreground);
-    stroke-width: 3;
-  }
-
-  #vor-obs-simulator .aircraft-ring {
-    stroke: var(--orange);
-  }
-
-  #vor-obs-simulator .station-mark,
-  #vor-obs-simulator .aircraft-mark {
-    fill: var(--foreground);
-  }
-
-  #vor-obs-simulator .dot {
-    fill: var(--muted-foreground);
-  }
-
-  #vor-obs-simulator .fixed-aircraft {
-    fill: var(--foreground);
-  }
-
-  #vor-obs-simulator .svg-label {
-    fill: var(--foreground);
-    font-size: 19px;
-    font-weight: 500;
-  }
-
-  #vor-obs-simulator .svg-small {
-    fill: var(--muted-foreground);
-    font-size: 16px;
-  }
-
-  #vor-obs-simulator .flag {
-    fill: color-mix(in srgb, var(--accent) 78%, transparent);
-    stroke: var(--border);
-    stroke-width: 2;
-  }
-
-  #vor-obs-simulator .flag-text {
-    fill: var(--accent-foreground);
-    font-size: 20px;
-    font-weight: 500;
-  }
-
-  #vor-obs-simulator .legend {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 2px;
-  }
-
-  #vor-obs-simulator .legend-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  #vor-obs-simulator .swatch {
-    width: 22px;
-    height: 4px;
-    display: inline-block;
-  }
-
-  #vor-obs-simulator .swatch.obs { background: var(--blue); }
-  #vor-obs-simulator .swatch.radial { background: var(--orange); }
-  #vor-obs-simulator .swatch.cdi { background: var(--purple); }
-
-  #vor-obs-simulator .controls {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px 22px;
-    margin-top: 16px;
-  }
-
-  #vor-obs-simulator .control-label {
-    display: grid;
-    gap: 6px;
-  }
-
-  #vor-obs-simulator .control-head {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    font-weight: 500;
-  }
-
-  #vor-obs-simulator .preset-row {
-    grid-column: 1 / -1;
+  #combined-cdi-simulator .source-row,
+  #combined-cdi-simulator .preset-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 8px;
   }
 
-  #vor-obs-simulator .hint {
+  #combined-cdi-simulator .source-row {
+    margin: 10px 0 7px;
+  }
+
+  #combined-cdi-simulator .state-line {
+    min-height: 1.5em;
+    font-weight: 500;
+  }
+
+  #combined-cdi-simulator .visuals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    align-items: start;
+    margin-top: 12px;
+  }
+
+  #combined-cdi-simulator .visual-block {
+    min-width: 0;
+  }
+
+  #combined-cdi-simulator .diagram {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  #combined-cdi-simulator .map-face,
+  #combined-cdi-simulator .instrument-bezel {
+    fill: color-mix(in srgb, var(--card) 82%, transparent);
+    stroke: var(--border);
+    stroke-width: 4;
+  }
+
+  #combined-cdi-simulator .instrument-ring {
+    fill: color-mix(in srgb, var(--background) 82%, var(--foreground));
+    stroke: var(--muted-foreground);
+    stroke-width: 4;
+  }
+
+  #combined-cdi-simulator .instrument-centre {
+    fill: color-mix(in srgb, var(--card) 86%, var(--background));
+  }
+
+  #combined-cdi-simulator .minor-line,
+  #combined-cdi-simulator .card-tick {
+    stroke: var(--muted-foreground);
+    stroke-width: 2;
+  }
+
+  #combined-cdi-simulator .card-tick-major {
+    stroke: var(--foreground);
+    stroke-width: 4;
+  }
+
+  #combined-cdi-simulator .map-course,
+  #combined-cdi-simulator .gps-course {
+    stroke: var(--blue);
+    stroke-width: 7;
+    stroke-linecap: round;
+  }
+
+  #combined-cdi-simulator .map-radial,
+  #combined-cdi-simulator .cross-track {
+    stroke: var(--orange);
+    stroke-width: 5;
+    stroke-linecap: round;
+  }
+
+  #combined-cdi-simulator .cross-track {
+    stroke-dasharray: 7 7;
+  }
+
+  #combined-cdi-simulator .cdi-needle {
+    stroke: var(--yellow);
+    stroke-width: 7;
+    stroke-linecap: square;
+    transition: transform 150ms ease, opacity 150ms ease;
+  }
+
+  #combined-cdi-simulator .cdi-arrow {
+    fill: var(--yellow);
+    transition: transform 150ms ease, opacity 150ms ease;
+  }
+
+  #combined-cdi-simulator .course-index {
+    fill: var(--yellow);
+  }
+
+  #combined-cdi-simulator .dot {
+    fill: var(--muted-foreground);
+  }
+
+  #combined-cdi-simulator .centre-ring,
+  #combined-cdi-simulator .station-ring,
+  #combined-cdi-simulator .aircraft-ring {
+    fill: var(--card);
+    stroke: var(--foreground);
+    stroke-width: 3;
+  }
+
+  #combined-cdi-simulator .aircraft-ring {
+    stroke: var(--orange);
+  }
+
+  #combined-cdi-simulator .station-mark,
+  #combined-cdi-simulator .aircraft-mark {
+    fill: var(--foreground);
+  }
+
+  #combined-cdi-simulator .card-label,
+  #combined-cdi-simulator .svg-label {
+    fill: var(--foreground);
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  #combined-cdi-simulator .svg-small {
+    fill: var(--muted-foreground);
+    font-size: 14px;
+  }
+
+  #combined-cdi-simulator .source-window {
+    fill: color-mix(in srgb, var(--accent) 80%, transparent);
+    stroke: var(--border);
+    stroke-width: 2;
+  }
+
+  #combined-cdi-simulator .source-text {
+    fill: var(--accent-foreground);
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  #combined-cdi-simulator .sense-arrow {
+    fill: var(--foreground);
+  }
+
+  #combined-cdi-simulator .nav-flag {
+    fill: var(--red);
+  }
+
+  #combined-cdi-simulator .nav-text {
+    fill: var(--primary-foreground);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  #combined-cdi-simulator .obs-knob {
+    fill: color-mix(in srgb, var(--card) 78%, var(--background));
+    stroke: var(--muted-foreground);
+    stroke-width: 4;
+  }
+
+  #combined-cdi-simulator .controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 22px;
+    margin-top: 14px;
+  }
+
+  #combined-cdi-simulator .control-label {
+    display: grid;
+    gap: 6px;
+  }
+
+  #combined-cdi-simulator .control-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-weight: 500;
+  }
+
+  #combined-cdi-simulator .wide-control,
+  #combined-cdi-simulator .preset-row,
+  #combined-cdi-simulator .hint {
     grid-column: 1 / -1;
-    margin: 0;
+  }
+
+  #combined-cdi-simulator .hint {
     text-align: center;
     color: var(--muted-foreground);
   }
 
-  @media (max-width: 560px) {
-    #vor-obs-simulator .visuals,
-    #vor-obs-simulator .controls {
+  #combined-cdi-simulator .hidden {
+    display: none;
+  }
+
+  #combined-cdi-simulator button[aria-pressed=&quot;true&quot;] {
+    color: var(--primary-foreground);
+    background: var(--foreground);
+    border-color: transparent;
+  }
+
+  @media (max-width: 720px) {
+    #combined-cdi-simulator .visuals,
+    #combined-cdi-simulator .controls {
       grid-template-columns: 1fr;
     }
 
-    #vor-obs-simulator .preset-row,
-    #vor-obs-simulator .hint {
+    #combined-cdi-simulator .wide-control,
+    #combined-cdi-simulator .preset-row,
+    #combined-cdi-simulator .hint {
       grid-column: auto;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    #vor-obs-simulator .cdi-needle {
+    #combined-cdi-simulator .cdi-needle,
+    #combined-cdi-simulator .cdi-arrow {
       transition: none;
     }
   }
 &lt;/style&gt;
 
-&lt;section id=&quot;vor-obs-simulator&quot; aria-labelledby=&quot;vor-sim-title&quot;&gt;
-  &lt;h2 id=&quot;vor-sim-title&quot;&gt;VOR OBS &amp;amp; CDI Simulator&lt;/h2&gt;
+&lt;section id=&quot;combined-cdi-simulator&quot; aria-labelledby=&quot;combined-cdi-title&quot;&gt;
+  &lt;h2 id=&quot;combined-cdi-title&quot;&gt;VOR / GPS Shared CDI Simulator&lt;/h2&gt;
 
-  &lt;p id=&quot;vor-state&quot; class=&quot;state-line tabular-nums&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+  &lt;div class=&quot;source-row&quot; aria-label=&quot;Navigation source&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-source=&quot;vor&quot; aria-pressed=&quot;true&quot;&gt;VOR&lt;/button&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-source=&quot;gps&quot; aria-pressed=&quot;false&quot;&gt;GPS&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;p id=&quot;combined-state&quot; class=&quot;state-line tabular-nums&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
 
   &lt;div class=&quot;visuals&quot;&gt;
     &lt;div class=&quot;visual-block&quot;&gt;
-      &lt;h3&gt;Aircraft position&lt;/h3&gt;
-      &lt;svg class=&quot;diagram&quot; viewBox=&quot;0 0 460 460&quot; role=&quot;img&quot; aria-labelledby=&quot;map-title map-desc&quot;&gt;
-        &lt;title id=&quot;map-title&quot;&gt;Top-down VOR position diagram&lt;/title&gt;
-        &lt;desc id=&quot;map-desc&quot;&gt;Shows the selected OBS course through the VOR and the aircraft radial from the station.&lt;/desc&gt;
+      &lt;h3 id=&quot;map-heading&quot;&gt;Aircraft position&lt;/h3&gt;
+      &lt;svg class=&quot;diagram&quot; viewBox=&quot;0 0 480 440&quot; role=&quot;img&quot; aria-labelledby=&quot;combined-map-title combined-map-desc&quot;&gt;
+        &lt;title id=&quot;combined-map-title&quot;&gt;Top view of the selected navigation course&lt;/title&gt;
+        &lt;desc id=&quot;combined-map-desc&quot;&gt;Shows aircraft position relative to a VOR radial or GPS desired track.&lt;/desc&gt;
 
-        &lt;circle class=&quot;map-face&quot; cx=&quot;230&quot; cy=&quot;230&quot; r=&quot;174&quot;/&gt;
-        &lt;line class=&quot;minor&quot; x1=&quot;230&quot; y1=&quot;56&quot; x2=&quot;230&quot; y2=&quot;73&quot;/&gt;
-        &lt;line class=&quot;minor&quot; x1=&quot;404&quot; y1=&quot;230&quot; x2=&quot;387&quot; y2=&quot;230&quot;/&gt;
-        &lt;line class=&quot;minor&quot; x1=&quot;230&quot; y1=&quot;404&quot; x2=&quot;230&quot; y2=&quot;387&quot;/&gt;
-        &lt;line class=&quot;minor&quot; x1=&quot;56&quot; y1=&quot;230&quot; x2=&quot;73&quot; y2=&quot;230&quot;/&gt;
-        &lt;text class=&quot;svg-label&quot; x=&quot;230&quot; y=&quot;24&quot; text-anchor=&quot;middle&quot;&gt;N&lt;/text&gt;
-        &lt;text class=&quot;svg-label&quot; x=&quot;438&quot; y=&quot;237&quot; text-anchor=&quot;middle&quot;&gt;E&lt;/text&gt;
-        &lt;text class=&quot;svg-label&quot; x=&quot;230&quot; y=&quot;450&quot; text-anchor=&quot;middle&quot;&gt;S&lt;/text&gt;
-        &lt;text class=&quot;svg-label&quot; x=&quot;22&quot; y=&quot;237&quot; text-anchor=&quot;middle&quot;&gt;W&lt;/text&gt;
+        &lt;g id=&quot;vor-map&quot;&gt;
+          &lt;circle class=&quot;map-face&quot; cx=&quot;240&quot; cy=&quot;220&quot; r=&quot;172&quot;/&gt;
+          &lt;line class=&quot;minor-line&quot; x1=&quot;240&quot; y1=&quot;48&quot; x2=&quot;240&quot; y2=&quot;66&quot;/&gt;
+          &lt;line class=&quot;minor-line&quot; x1=&quot;412&quot; y1=&quot;220&quot; x2=&quot;394&quot; y2=&quot;220&quot;/&gt;
+          &lt;line class=&quot;minor-line&quot; x1=&quot;240&quot; y1=&quot;392&quot; x2=&quot;240&quot; y2=&quot;374&quot;/&gt;
+          &lt;line class=&quot;minor-line&quot; x1=&quot;68&quot; y1=&quot;220&quot; x2=&quot;86&quot; y2=&quot;220&quot;/&gt;
+          &lt;text class=&quot;svg-label&quot; x=&quot;240&quot; y=&quot;28&quot; text-anchor=&quot;middle&quot;&gt;N&lt;/text&gt;
+          &lt;text class=&quot;svg-label&quot; x=&quot;446&quot; y=&quot;227&quot; text-anchor=&quot;middle&quot;&gt;E&lt;/text&gt;
+          &lt;text class=&quot;svg-label&quot; x=&quot;240&quot; y=&quot;430&quot; text-anchor=&quot;middle&quot;&gt;S&lt;/text&gt;
+          &lt;text class=&quot;svg-label&quot; x=&quot;34&quot; y=&quot;227&quot; text-anchor=&quot;middle&quot;&gt;W&lt;/text&gt;
+          &lt;line id=&quot;vor-selected-course&quot; class=&quot;map-course&quot;/&gt;
+          &lt;polygon id=&quot;vor-course-arrow&quot; fill=&quot;var(--blue)&quot;/&gt;
+          &lt;line id=&quot;vor-aircraft-radial&quot; class=&quot;map-radial&quot;/&gt;
+          &lt;circle class=&quot;station-ring&quot; cx=&quot;240&quot; cy=&quot;220&quot; r=&quot;23&quot;/&gt;
+          &lt;path class=&quot;station-mark&quot; d=&quot;M240 203 L255 212 L250 231 L230 231 L225 212 Z&quot;/&gt;
+          &lt;text class=&quot;svg-small&quot; x=&quot;240&quot; y=&quot;260&quot; text-anchor=&quot;middle&quot;&gt;VOR&lt;/text&gt;
+          &lt;g id=&quot;vor-aircraft&quot;&gt;
+            &lt;circle class=&quot;aircraft-ring&quot; cx=&quot;0&quot; cy=&quot;0&quot; r=&quot;22&quot;/&gt;
+            &lt;path class=&quot;aircraft-mark&quot; d=&quot;M0,-14 L4,-4 L14,1 L14,5 L4,3 L3,12 L8,16 L8,18 L0,16 L-8,18 L-8,16 L-3,12 L-4,3 L-14,5 L-14,1 L-4,-4 Z&quot;/&gt;
+          &lt;/g&gt;
+        &lt;/g&gt;
 
-        &lt;line id=&quot;selected-course&quot; class=&quot;obs-line&quot;/&gt;
-        &lt;polygon id=&quot;course-arrow&quot; fill=&quot;var(--blue)&quot;/&gt;
-        &lt;line id=&quot;aircraft-radial&quot; class=&quot;radial-line&quot;/&gt;
-
-        &lt;circle class=&quot;vor-ring&quot; cx=&quot;230&quot; cy=&quot;230&quot; r=&quot;24&quot;/&gt;
-        &lt;path class=&quot;station-mark&quot; d=&quot;M230 212 L246 222 L240 241 L220 241 L214 222 Z&quot;/&gt;
-        &lt;text class=&quot;svg-label&quot; x=&quot;230&quot; y=&quot;274&quot; text-anchor=&quot;middle&quot;&gt;VOR&lt;/text&gt;
-
-        &lt;g id=&quot;aircraft-position&quot;&gt;
-          &lt;circle class=&quot;aircraft-ring&quot; cx=&quot;0&quot; cy=&quot;0&quot; r=&quot;24&quot;/&gt;
-          &lt;path class=&quot;aircraft-mark&quot; d=&quot;M0,-15 L4,-4 L15,1 L15,5 L4,3 L3,13 L8,17 L8,19 L0,17 L-8,19 L-8,17 L-3,13 L-4,3 L-15,5 L-15,1 L-4,-4 Z&quot;/&gt;
+        &lt;g id=&quot;gps-map&quot; class=&quot;hidden&quot;&gt;
+          &lt;rect class=&quot;map-face&quot; x=&quot;38&quot; y=&quot;46&quot; width=&quot;404&quot; height=&quot;344&quot; rx=&quot;12&quot;/&gt;
+          &lt;text class=&quot;svg-small&quot; x=&quot;68&quot; y=&quot;156&quot;&gt;Desired GPS track&lt;/text&gt;
+          &lt;line class=&quot;gps-course&quot; x1=&quot;68&quot; y1=&quot;220&quot; x2=&quot;404&quot; y2=&quot;220&quot;/&gt;
+          &lt;polygon fill=&quot;var(--blue)&quot; points=&quot;425,220 396,203 396,237&quot;/&gt;
+          &lt;line id=&quot;gps-cross-track-line&quot; class=&quot;cross-track&quot; x1=&quot;330&quot; y1=&quot;220&quot; x2=&quot;330&quot; y2=&quot;305&quot;/&gt;
+          &lt;text id=&quot;gps-distance-label&quot; class=&quot;svg-label&quot; x=&quot;370&quot; y=&quot;268&quot; text-anchor=&quot;middle&quot;&gt;5 NM&lt;/text&gt;
+          &lt;g id=&quot;gps-aircraft&quot; transform=&quot;translate(285 305) rotate(90)&quot;&gt;
+            &lt;path class=&quot;aircraft-mark&quot; d=&quot;M0,-27 L7,-7 L24,2 L24,8 L7,5 L5,23 L12,29 L12,33 L0,29 L-12,33 L-12,29 L-5,23 L-7,5 L-24,8 L-24,2 L-7,-7 Z&quot;/&gt;
+          &lt;/g&gt;
+          &lt;text id=&quot;gps-side-label&quot; class=&quot;svg-small&quot; x=&quot;285&quot; y=&quot;355&quot; text-anchor=&quot;middle&quot;&gt;5 NM right of track&lt;/text&gt;
         &lt;/g&gt;
       &lt;/svg&gt;
-
-      &lt;div class=&quot;legend text-small&quot; aria-label=&quot;Diagram legend&quot;&gt;
-        &lt;span class=&quot;legend-item&quot;&gt;&lt;span class=&quot;swatch obs&quot;&gt;&lt;/span&gt;Selected OBS course&lt;/span&gt;
-        &lt;span class=&quot;legend-item&quot;&gt;&lt;span class=&quot;swatch radial&quot;&gt;&lt;/span&gt;Aircraft radial&lt;/span&gt;
-      &lt;/div&gt;
     &lt;/div&gt;
 
     &lt;div class=&quot;visual-block&quot;&gt;
-      &lt;h3&gt;VOR indicator&lt;/h3&gt;
-      &lt;svg class=&quot;diagram&quot; viewBox=&quot;0 0 460 460&quot; role=&quot;img&quot; aria-labelledby=&quot;indicator-title indicator-desc&quot;&gt;
-        &lt;title id=&quot;indicator-title&quot;&gt;VOR course deviation indicator&lt;/title&gt;
-        &lt;desc id=&quot;indicator-desc&quot;&gt;Shows the OBS selection, CDI needle position, and TO, FROM, or OFF flag.&lt;/desc&gt;
+      &lt;h3&gt;Realistic CDI / OBS indicator&lt;/h3&gt;
+      &lt;svg class=&quot;diagram&quot; viewBox=&quot;0 0 480 530&quot; role=&quot;img&quot; aria-labelledby=&quot;combined-ind-title combined-ind-desc&quot;&gt;
+        &lt;title id=&quot;combined-ind-title&quot;&gt;Shared VOR and GPS course deviation indicator&lt;/title&gt;
+        &lt;desc id=&quot;combined-ind-desc&quot;&gt;A realistic OBS card with course index, CDI needle, TO FROM indication, source annunciation, and NAV flag.&lt;/desc&gt;
 
-        &lt;circle class=&quot;dial-face&quot; cx=&quot;230&quot; cy=&quot;230&quot; r=&quot;174&quot;/&gt;
-        &lt;path class=&quot;minor&quot; fill=&quot;none&quot; d=&quot;M230 70 L230 88 M390 230 L372 230 M230 390 L230 372 M70 230 L88 230&quot;/&gt;
+        &lt;circle class=&quot;instrument-bezel&quot; cx=&quot;240&quot; cy=&quot;225&quot; r=&quot;216&quot;/&gt;
+        &lt;circle class=&quot;instrument-ring&quot; cx=&quot;240&quot; cy=&quot;225&quot; r=&quot;194&quot;/&gt;
+        &lt;g id=&quot;course-card-ticks&quot; aria-hidden=&quot;true&quot;&gt;&lt;/g&gt;
+        &lt;g id=&quot;course-card-labels&quot; aria-hidden=&quot;true&quot;&gt;&lt;/g&gt;
+        &lt;circle class=&quot;instrument-centre&quot; cx=&quot;240&quot; cy=&quot;225&quot; r=&quot;135&quot;/&gt;
 
-        &lt;rect class=&quot;flag&quot; x=&quot;174&quot; y=&quot;82&quot; width=&quot;112&quot; height=&quot;42&quot; rx=&quot;6&quot;/&gt;
-        &lt;text class=&quot;svg-small&quot; x=&quot;230&quot; y=&quot;74&quot; text-anchor=&quot;middle&quot;&gt;OBS&lt;/text&gt;
-        &lt;text id=&quot;obs-window&quot; class=&quot;flag-text&quot; x=&quot;230&quot; y=&quot;110&quot; text-anchor=&quot;middle&quot;&gt;350°&lt;/text&gt;
+        &lt;polygon class=&quot;course-index&quot; points=&quot;240,32 226,66 254,66&quot;/&gt;
 
-        &lt;rect class=&quot;flag&quot; x=&quot;301&quot; y=&quot;145&quot; width=&quot;86&quot; height=&quot;42&quot; rx=&quot;6&quot;/&gt;
-        &lt;text id=&quot;to-from-flag&quot; class=&quot;flag-text&quot; x=&quot;344&quot; y=&quot;173&quot; text-anchor=&quot;middle&quot;&gt;OFF&lt;/text&gt;
+        &lt;rect class=&quot;source-window&quot; x=&quot;118&quot; y=&quot;112&quot; width=&quot;92&quot; height=&quot;38&quot; rx=&quot;5&quot;/&gt;
+        &lt;text id=&quot;source-label&quot; class=&quot;source-text&quot; x=&quot;164&quot; y=&quot;137&quot; text-anchor=&quot;middle&quot;&gt;VOR&lt;/text&gt;
 
-        &lt;g aria-hidden=&quot;true&quot;&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;130&quot; cy=&quot;230&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;150&quot; cy=&quot;230&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;170&quot; cy=&quot;230&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;190&quot; cy=&quot;230&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;210&quot; cy=&quot;230&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;250&quot; cy=&quot;230&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;270&quot; cy=&quot;230&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;290&quot; cy=&quot;230&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;310&quot; cy=&quot;230&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;330&quot; cy=&quot;230&quot; r=&quot;5&quot;/&gt;
+        &lt;g id=&quot;sense-group&quot;&gt;
+          &lt;polygon id=&quot;sense-arrow&quot; class=&quot;sense-arrow&quot; points=&quot;330,126 318,149 342,149&quot;/&gt;
+          &lt;text id=&quot;sense-label&quot; class=&quot;svg-label&quot; x=&quot;330&quot; y=&quot;174&quot; text-anchor=&quot;middle&quot;&gt;FROM&lt;/text&gt;
         &lt;/g&gt;
 
-        &lt;line id=&quot;cdi-needle&quot; class=&quot;cdi-needle&quot; x1=&quot;230&quot; y1=&quot;150&quot; x2=&quot;230&quot; y2=&quot;310&quot;/&gt;
+        &lt;g id=&quot;nav-flag&quot; class=&quot;hidden&quot;&gt;
+          &lt;rect class=&quot;nav-flag&quot; x=&quot;218&quot; y=&quot;102&quot; width=&quot;44&quot; height=&quot;62&quot; rx=&quot;3&quot;/&gt;
+          &lt;text class=&quot;nav-text&quot; x=&quot;240&quot; y=&quot;128&quot; text-anchor=&quot;middle&quot;&gt;N&lt;/text&gt;
+          &lt;text class=&quot;nav-text&quot; x=&quot;240&quot; y=&quot;145&quot; text-anchor=&quot;middle&quot;&gt;A&lt;/text&gt;
+          &lt;text class=&quot;nav-text&quot; x=&quot;240&quot; y=&quot;162&quot; text-anchor=&quot;middle&quot;&gt;V&lt;/text&gt;
+        &lt;/g&gt;
 
-        &lt;path class=&quot;fixed-aircraft&quot; d=&quot;M230 206 L236 222 L267 230 L267 237 L236 233 L234 257 L244 265 L244 270 L230 265 L216 270 L216 265 L226 257 L224 233 L193 237 L193 230 L224 222 Z&quot;/&gt;
+        &lt;g aria-hidden=&quot;true&quot;&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;140&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;160&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;180&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;200&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;220&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;260&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;280&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;300&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;320&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;340&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+        &lt;/g&gt;
 
-        &lt;text id=&quot;cdi-readout&quot; class=&quot;svg-label&quot; x=&quot;230&quot; y=&quot;349&quot; text-anchor=&quot;middle&quot;&gt;CDI: FULL LEFT&lt;/text&gt;
-        &lt;text class=&quot;svg-small&quot; x=&quot;230&quot; y=&quot;376&quot; text-anchor=&quot;middle&quot;&gt;Each dot = 2° · full scale = 10°&lt;/text&gt;
+        &lt;g id=&quot;cdi-needle-group&quot;&gt;
+          &lt;line id=&quot;shared-cdi-needle&quot; class=&quot;cdi-needle&quot; x1=&quot;240&quot; y1=&quot;151&quot; x2=&quot;240&quot; y2=&quot;299&quot;/&gt;
+          &lt;polygon id=&quot;shared-cdi-head&quot; class=&quot;cdi-arrow&quot; points=&quot;240,137 230,158 250,158&quot;/&gt;
+          &lt;polygon id=&quot;shared-cdi-tail&quot; class=&quot;cdi-arrow&quot; points=&quot;240,313 230,292 250,292&quot;/&gt;
+        &lt;/g&gt;
+
+        &lt;circle class=&quot;centre-ring&quot; cx=&quot;240&quot; cy=&quot;225&quot; r=&quot;17&quot;/&gt;
+
+        &lt;circle class=&quot;obs-knob&quot; cx=&quot;82&quot; cy=&quot;473&quot; r=&quot;31&quot;/&gt;
+        &lt;text class=&quot;svg-label&quot; x=&quot;82&quot; y=&quot;480&quot; text-anchor=&quot;middle&quot;&gt;OBS&lt;/text&gt;
+        &lt;text id=&quot;instrument-readout&quot; class=&quot;svg-label&quot; x=&quot;286&quot; y=&quot;465&quot; text-anchor=&quot;middle&quot;&gt;CDI CENTERED&lt;/text&gt;
+        &lt;text id=&quot;instrument-scale&quot; class=&quot;svg-small&quot; x=&quot;286&quot; y=&quot;494&quot; text-anchor=&quot;middle&quot;&gt;VOR: 2° per dot · 10° full scale&lt;/text&gt;
       &lt;/svg&gt;
-
-      &lt;div class=&quot;legend text-small&quot; aria-label=&quot;Indicator legend&quot;&gt;
-        &lt;span class=&quot;legend-item&quot;&gt;&lt;span class=&quot;swatch cdi&quot;&gt;&lt;/span&gt;CDI needle&lt;/span&gt;
-      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 
-  &lt;div class=&quot;controls&quot;&gt;
-    &lt;label class=&quot;control-label form-label&quot; for=&quot;obs-control&quot;&gt;
-      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;OBS selected course&lt;/span&gt;&lt;span id=&quot;obs-value&quot; class=&quot;tabular-nums&quot;&gt;350°&lt;/span&gt;&lt;/span&gt;
-      &lt;input id=&quot;obs-control&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;359&quot; step=&quot;1&quot; value=&quot;350&quot;/&gt;
+  &lt;div id=&quot;vor-controls&quot; class=&quot;controls&quot;&gt;
+    &lt;label class=&quot;control-label form-label&quot; for=&quot;combined-obs-control&quot;&gt;
+      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;OBS selected course&lt;/span&gt;&lt;span id=&quot;combined-obs-value&quot; class=&quot;tabular-nums&quot;&gt;000°&lt;/span&gt;&lt;/span&gt;
+      &lt;input id=&quot;combined-obs-control&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;359&quot; step=&quot;1&quot; value=&quot;0&quot;/&gt;
     &lt;/label&gt;
 
-    &lt;label class=&quot;control-label form-label&quot; for=&quot;radial-control&quot;&gt;
-      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;Aircraft radial&lt;/span&gt;&lt;span id=&quot;radial-value&quot; class=&quot;tabular-nums&quot;&gt;080°&lt;/span&gt;&lt;/span&gt;
-      &lt;input id=&quot;radial-control&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;359&quot; step=&quot;1&quot; value=&quot;80&quot;/&gt;
+    &lt;label class=&quot;control-label form-label&quot; for=&quot;combined-radial-control&quot;&gt;
+      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;Aircraft radial&lt;/span&gt;&lt;span id=&quot;combined-radial-value&quot; class=&quot;tabular-nums&quot;&gt;000°&lt;/span&gt;&lt;/span&gt;
+      &lt;input id=&quot;combined-radial-control&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;359&quot; step=&quot;1&quot; value=&quot;0&quot;/&gt;
     &lt;/label&gt;
 
-    &lt;div class=&quot;preset-row&quot; aria-label=&quot;Example settings&quot;&gt;
-      &lt;button class=&quot;btn btn-primary&quot; type=&quot;button&quot; data-obs=&quot;350&quot; data-radial=&quot;80&quot;&gt;OFF example&lt;/button&gt;
-      &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-obs=&quot;350&quot; data-radial=&quot;350&quot;&gt;Centered FROM&lt;/button&gt;
-      &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-obs=&quot;350&quot; data-radial=&quot;170&quot;&gt;Centered TO&lt;/button&gt;
+    &lt;label class=&quot;form-check wide-control&quot; for=&quot;vor-signal-valid&quot;&gt;
+      &lt;input id=&quot;vor-signal-valid&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot; checked/&gt;
+      &lt;span&gt;VOR signal reliable&lt;/span&gt;
+    &lt;/label&gt;
+
+    &lt;div class=&quot;preset-row&quot;&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-vor-obs=&quot;0&quot; data-vor-radial=&quot;0&quot;&gt;North / centered FROM&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-vor-obs=&quot;350&quot; data-vor-radial=&quot;80&quot;&gt;350° / 080° OFF example&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-vor-obs=&quot;350&quot; data-vor-radial=&quot;170&quot;&gt;350° centered TO&lt;/button&gt;
     &lt;/div&gt;
 
-    &lt;p class=&quot;hint&quot;&gt;Aircraft heading is irrelevant: VOR indication uses aircraft position (radial) and OBS selection.&lt;/p&gt;
+    &lt;p class=&quot;hint&quot;&gt;The course index stays fixed. Turning OBS rotates the card, so N is at the top only when 000° is selected.&lt;/p&gt;
   &lt;/div&gt;
 
+  &lt;div id=&quot;gps-controls&quot; class=&quot;controls hidden&quot;&gt;
+    &lt;label class=&quot;control-label form-label&quot; for=&quot;gps-course-control&quot;&gt;
+      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;Selected GPS course&lt;/span&gt;&lt;span id=&quot;gps-course-value&quot; class=&quot;tabular-nums&quot;&gt;000°&lt;/span&gt;&lt;/span&gt;
+      &lt;input id=&quot;gps-course-control&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;359&quot; step=&quot;1&quot; value=&quot;0&quot;/&gt;
+    &lt;/label&gt;
+
+    &lt;label class=&quot;control-label form-label&quot; for=&quot;gps-phase-control&quot;&gt;
+      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;CDI scale&lt;/span&gt;&lt;span id=&quot;gps-scale-value&quot; class=&quot;tabular-nums&quot;&gt;±5 NM&lt;/span&gt;&lt;/span&gt;
+      &lt;select id=&quot;gps-phase-control&quot; class=&quot;form-select&quot;&gt;
+        &lt;option value=&quot;exam-enr&quot;&gt;PPL exam ENR — ±5 NM&lt;/option&gt;
+        &lt;option value=&quot;modern-enr&quot;&gt;Modern ENR — ±2 NM&lt;/option&gt;
+        &lt;option value=&quot;terminal&quot;&gt;TERM — ±1 NM&lt;/option&gt;
+        &lt;option value=&quot;approach&quot;&gt;APR — ±0.3 NM&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/label&gt;
+
+    &lt;label class=&quot;control-label form-label wide-control&quot; for=&quot;gps-error-control&quot;&gt;
+      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;Cross-track error&lt;/span&gt;&lt;span id=&quot;gps-error-value&quot; class=&quot;tabular-nums&quot;&gt;5 NM right&lt;/span&gt;&lt;/span&gt;
+      &lt;input id=&quot;gps-error-control&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;-5&quot; max=&quot;5&quot; step=&quot;1&quot; value=&quot;5&quot;/&gt;
+    &lt;/label&gt;
+
+    &lt;label class=&quot;form-check wide-control&quot; for=&quot;gps-signal-valid&quot;&gt;
+      &lt;input id=&quot;gps-signal-valid&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot; checked/&gt;
+      &lt;span&gt;GPS guidance reliable&lt;/span&gt;
+    &lt;/label&gt;
+
+    &lt;div class=&quot;preset-row&quot;&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-gps-fraction=&quot;0&quot;&gt;Centered&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-gps-fraction=&quot;0.2&quot;&gt;One dot right&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-gps-fraction=&quot;1&quot;&gt;Full-scale right&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;p class=&quot;hint&quot;&gt;GPS uses distance, not VOR degrees. The source and active CDI scale must always be checked.&lt;/p&gt;
+  &lt;/div&gt;
 &lt;/section&gt;
 
 &lt;script&gt;
 (() =&gt; {
-  const root = document.getElementById(&#x27;vor-obs-simulator&#x27;);
+  const root = document.getElementById(&#x27;combined-cdi-simulator&#x27;);
   if (!root) return;
 
-  const obsControl = root.querySelector(&#x27;#obs-control&#x27;);
-  const radialControl = root.querySelector(&#x27;#radial-control&#x27;);
-  const obsValue = root.querySelector(&#x27;#obs-value&#x27;);
-  const radialValue = root.querySelector(&#x27;#radial-value&#x27;);
-  const stateLine = root.querySelector(&#x27;#vor-state&#x27;);
-  const selectedCourse = root.querySelector(&#x27;#selected-course&#x27;);
-  const courseArrow = root.querySelector(&#x27;#course-arrow&#x27;);
-  const aircraftRadial = root.querySelector(&#x27;#aircraft-radial&#x27;);
-  const aircraftPosition = root.querySelector(&#x27;#aircraft-position&#x27;);
-  const obsWindow = root.querySelector(&#x27;#obs-window&#x27;);
-  const toFromFlag = root.querySelector(&#x27;#to-from-flag&#x27;);
-  const cdiNeedle = root.querySelector(&#x27;#cdi-needle&#x27;);
-  const cdiReadout = root.querySelector(&#x27;#cdi-readout&#x27;);
+  const state = root.querySelector(&#x27;#combined-state&#x27;);
+  const sourceButtons = [...root.querySelectorAll(&#x27;[data-source]&#x27;)];
+  const vorControls = root.querySelector(&#x27;#vor-controls&#x27;);
+  const gpsControls = root.querySelector(&#x27;#gps-controls&#x27;);
+  const vorMap = root.querySelector(&#x27;#vor-map&#x27;);
+  const gpsMap = root.querySelector(&#x27;#gps-map&#x27;);
+  const mapHeading = root.querySelector(&#x27;#map-heading&#x27;);
 
-  const cx = 230;
-  const cy = 230;
+  const obsControl = root.querySelector(&#x27;#combined-obs-control&#x27;);
+  const radialControl = root.querySelector(&#x27;#combined-radial-control&#x27;);
+  const obsValue = root.querySelector(&#x27;#combined-obs-value&#x27;);
+  const radialValue = root.querySelector(&#x27;#combined-radial-value&#x27;);
+  const vorSignal = root.querySelector(&#x27;#vor-signal-valid&#x27;);
+  const selectedCourse = root.querySelector(&#x27;#vor-selected-course&#x27;);
+  const courseArrow = root.querySelector(&#x27;#vor-course-arrow&#x27;);
+  const aircraftRadial = root.querySelector(&#x27;#vor-aircraft-radial&#x27;);
+  const vorAircraft = root.querySelector(&#x27;#vor-aircraft&#x27;);
 
-  function padBearing(value) {
-    return String(Math.round(value) % 360).padStart(3, &#x27;0&#x27;) + &#x27;°&#x27;;
+  const gpsCourseControl = root.querySelector(&#x27;#gps-course-control&#x27;);
+  const gpsCourseValue = root.querySelector(&#x27;#gps-course-value&#x27;);
+  const gpsPhaseControl = root.querySelector(&#x27;#gps-phase-control&#x27;);
+  const gpsScaleValue = root.querySelector(&#x27;#gps-scale-value&#x27;);
+  const gpsErrorControl = root.querySelector(&#x27;#gps-error-control&#x27;);
+  const gpsErrorValue = root.querySelector(&#x27;#gps-error-value&#x27;);
+  const gpsSignal = root.querySelector(&#x27;#gps-signal-valid&#x27;);
+  const gpsCrossTrack = root.querySelector(&#x27;#gps-cross-track-line&#x27;);
+  const gpsDistanceLabel = root.querySelector(&#x27;#gps-distance-label&#x27;);
+  const gpsAircraft = root.querySelector(&#x27;#gps-aircraft&#x27;);
+  const gpsSideLabel = root.querySelector(&#x27;#gps-side-label&#x27;);
+
+  const ticksGroup = root.querySelector(&#x27;#course-card-ticks&#x27;);
+  const labelsGroup = root.querySelector(&#x27;#course-card-labels&#x27;);
+  const sourceLabel = root.querySelector(&#x27;#source-label&#x27;);
+  const senseGroup = root.querySelector(&#x27;#sense-group&#x27;);
+  const senseArrow = root.querySelector(&#x27;#sense-arrow&#x27;);
+  const senseLabel = root.querySelector(&#x27;#sense-label&#x27;);
+  const navFlag = root.querySelector(&#x27;#nav-flag&#x27;);
+  const needleGroup = root.querySelector(&#x27;#cdi-needle-group&#x27;);
+  const cdiNeedle = root.querySelector(&#x27;#shared-cdi-needle&#x27;);
+  const cdiHead = root.querySelector(&#x27;#shared-cdi-head&#x27;);
+  const cdiTail = root.querySelector(&#x27;#shared-cdi-tail&#x27;);
+  const instrumentReadout = root.querySelector(&#x27;#instrument-readout&#x27;);
+  const instrumentScale = root.querySelector(&#x27;#instrument-scale&#x27;);
+
+  const svgNS = &#x27;http://www.w3.org/2000/svg&#x27;;
+  const cardCx = 240;
+  const cardCy = 225;
+  const tickElements = [];
+  const labelElements = [];
+  let source = &#x27;vor&#x27;;
+
+  const gpsScales = {
+    &#x27;exam-enr&#x27;: {scale: 5, label: &#x27;GPS ENR&#x27;, decimals: 1},
+    &#x27;modern-enr&#x27;: {scale: 2, label: &#x27;GPS ENR&#x27;, decimals: 1},
+    terminal: {scale: 1, label: &#x27;GPS TERM&#x27;, decimals: 1},
+    approach: {scale: 0.3, label: &#x27;GPS APR&#x27;, decimals: 2}
+  };
+
+  function normalize(value) {
+    return ((Math.round(value) % 360) + 360) % 360;
+  }
+
+  function bearing(value) {
+    return String(normalize(value)).padStart(3, &#x27;0&#x27;) + &#x27;°&#x27;;
   }
 
   function signedDifference(a, b) {
     return ((a - b + 540) % 360) - 180;
   }
 
-  function pointAt(bearing, radius) {
-    const radians = bearing * Math.PI / 180;
-    return {
-      x: cx + Math.sin(radians) * radius,
-      y: cy - Math.cos(radians) * radius
-    };
+  function point(bearingValue, radius, cx = 240, cy = 220) {
+    const radians = bearingValue * Math.PI / 180;
+    return {x: cx + Math.sin(radians) * radius, y: cy - Math.cos(radians) * radius};
   }
 
   function setLine(line, start, end) {
@@ -1334,74 +1489,204 @@ html&gt;body{padding:0}&lt;/style&gt;
     line.setAttribute(&#x27;y2&#x27;, end.y.toFixed(1));
   }
 
-  function update() {
+  for (let value = 0; value &lt; 360; value += 5) {
+    const line = document.createElementNS(svgNS, &#x27;line&#x27;);
+    line.setAttribute(&#x27;class&#x27;, value % 30 === 0 ? &#x27;card-tick-major&#x27; : &#x27;card-tick&#x27;);
+    ticksGroup.appendChild(line);
+    tickElements.push({value, line});
+  }
+
+  for (let value = 0; value &lt; 360; value += 30) {
+    const text = document.createElementNS(svgNS, &#x27;text&#x27;);
+    text.setAttribute(&#x27;class&#x27;, &#x27;card-label&#x27;);
+    text.setAttribute(&#x27;text-anchor&#x27;, &#x27;middle&#x27;);
+    text.setAttribute(&#x27;dominant-baseline&#x27;, &#x27;middle&#x27;);
+    text.textContent = value === 0 ? &#x27;N&#x27; : value === 90 ? &#x27;E&#x27; : value === 180 ? &#x27;S&#x27; : value === 270 ? &#x27;W&#x27; : String(value / 10);
+    labelsGroup.appendChild(text);
+    labelElements.push({value, text});
+  }
+
+  function drawCourseCard(course) {
+    tickElements.forEach(({value, line}) =&gt; {
+      const angle = normalize(value - course);
+      const outer = point(angle, 184, cardCx, cardCy);
+      const inner = point(angle, value % 30 === 0 ? 165 : 173, cardCx, cardCy);
+      setLine(line, outer, inner);
+    });
+    labelElements.forEach(({value, text}) =&gt; {
+      const position = point(normalize(value - course), 147, cardCx, cardCy);
+      text.setAttribute(&#x27;x&#x27;, position.x.toFixed(1));
+      text.setAttribute(&#x27;y&#x27;, position.y.toFixed(1));
+    });
+  }
+
+  function setNeedle(offset, usable = true) {
+    const transform = `translate(${offset.toFixed(1)} 0)`;
+    cdiNeedle.setAttribute(&#x27;transform&#x27;, transform);
+    cdiHead.setAttribute(&#x27;transform&#x27;, transform);
+    cdiTail.setAttribute(&#x27;transform&#x27;, transform);
+    needleGroup.style.opacity = usable ? &#x27;1&#x27; : &#x27;.28&#x27;;
+  }
+
+  function setSense(flag) {
+    if (flag === &#x27;OFF&#x27;) {
+      senseGroup.classList.add(&#x27;hidden&#x27;);
+      return;
+    }
+    senseGroup.classList.remove(&#x27;hidden&#x27;);
+    senseLabel.textContent = flag;
+    senseArrow.setAttribute(&#x27;points&#x27;, flag === &#x27;TO&#x27; ? &#x27;330,126 318,149 342,149&#x27; : &#x27;330,181 318,158 342,158&#x27;);
+  }
+
+  function setSignalValid(valid) {
+    navFlag.classList.toggle(&#x27;hidden&#x27;, valid);
+  }
+
+  function updateVor() {
     const obs = Number(obsControl.value);
     const radial = Number(radialControl.value);
+    const valid = vorSignal.checked;
     const difference = signedDifference(radial, obs);
-    const differenceRadians = difference * Math.PI / 180;
-    const courseError = Math.asin(Math.sin(differenceRadians)) * 180 / Math.PI;
-    const ambiguityDistance = Math.abs(Math.abs(difference) - 90);
-    const isOff = ambiguityDistance &lt; 0.5;
-    const flag = isOff ? &#x27;OFF&#x27; : (Math.cos(differenceRadians) &gt;= 0 ? &#x27;FROM&#x27; : &#x27;TO&#x27;);
-
-    obsValue.textContent = padBearing(obs);
-    radialValue.textContent = padBearing(radial);
-    obsWindow.textContent = padBearing(obs);
-    toFromFlag.textContent = flag;
-
-    const courseForward = pointAt(obs, 154);
-    const courseBackward = pointAt((obs + 180) % 360, 154);
-    setLine(selectedCourse, courseBackward, courseForward);
-
-    const arrowTip = pointAt(obs, 125);
-    const arrowBase = pointAt(obs, 103);
-    const radians = obs * Math.PI / 180;
-    const normalX = Math.cos(radians) * 10;
-    const normalY = Math.sin(radians) * 10;
-    courseArrow.setAttribute(&#x27;points&#x27;, [
-      `${arrowTip.x.toFixed(1)},${arrowTip.y.toFixed(1)}`,
-      `${(arrowBase.x + normalX).toFixed(1)},${(arrowBase.y + normalY).toFixed(1)}`,
-      `${(arrowBase.x - normalX).toFixed(1)},${(arrowBase.y - normalY).toFixed(1)}`
-    ].join(&#x27; &#x27;));
-
-    const radialEnd = pointAt(radial, 142);
-    const aircraftPoint = pointAt(radial, 170);
-    setLine(aircraftRadial, {x: cx, y: cy}, radialEnd);
-    aircraftPosition.setAttribute(&#x27;transform&#x27;, `translate(${aircraftPoint.x.toFixed(1)} ${aircraftPoint.y.toFixed(1)})`);
-
+    const radians = difference * Math.PI / 180;
+    const courseError = Math.asin(Math.sin(radians)) * 180 / Math.PI;
+    const ambiguous = Math.abs(Math.abs(difference) - 90) &lt;= 1;
+    const flag = ambiguous ? &#x27;OFF&#x27; : (Math.cos(radians) &gt;= 0 ? &#x27;FROM&#x27; : &#x27;TO&#x27;);
     const needleDegrees = Math.max(-10, Math.min(10, -courseError));
-    const needleOffset = needleDegrees * 10;
-    cdiNeedle.style.transform = `translateX(${needleOffset.toFixed(1)}px)`;
 
-    if (Math.abs(courseError) &lt; 0.5) {
-      cdiReadout.textContent = &#x27;CDI: CENTERED&#x27;;
+    obsValue.textContent = bearing(obs);
+    radialValue.textContent = bearing(radial);
+    sourceLabel.textContent = &#x27;VOR&#x27;;
+    instrumentScale.textContent = &#x27;VOR: 2° per dot · 10° full scale&#x27;;
+    drawCourseCard(obs);
+    setSense(valid ? flag : &#x27;OFF&#x27;);
+    setSignalValid(valid);
+    setNeedle(needleDegrees * 10, valid &amp;&amp; !ambiguous);
+
+    const forward = point(obs, 150);
+    const backward = point(normalize(obs + 180), 150);
+    setLine(selectedCourse, backward, forward);
+    const arrowTip = point(obs, 124);
+    const arrowBase = point(obs, 103);
+    const angle = obs * Math.PI / 180;
+    const normalX = Math.cos(angle) * 10;
+    const normalY = Math.sin(angle) * 10;
+    courseArrow.setAttribute(&#x27;points&#x27;, `${arrowTip.x.toFixed(1)},${arrowTip.y.toFixed(1)} ${(arrowBase.x + normalX).toFixed(1)},${(arrowBase.y + normalY).toFixed(1)} ${(arrowBase.x - normalX).toFixed(1)},${(arrowBase.y - normalY).toFixed(1)}`);
+    setLine(aircraftRadial, {x: 240, y: 220}, point(radial, 140));
+    const aircraftPoint = point(radial, 169);
+    vorAircraft.setAttribute(&#x27;transform&#x27;, `translate(${aircraftPoint.x.toFixed(1)} ${aircraftPoint.y.toFixed(1)})`);
+
+    if (!valid) {
+      state.textContent = &#x27;VOR signal unreliable → NAV flag displayed&#x27;;
+      instrumentReadout.textContent = &#x27;DO NOT USE CDI&#x27;;
+    } else if (ambiguous) {
+      state.textContent = `${bearing(obs)} OBS and ${bearing(radial)} radial are 90° apart → TO/FROM ambiguous`;
+      instrumentReadout.textContent = &#x27;TO/FROM AMBIGUOUS&#x27;;
+    } else if (Math.abs(courseError) &lt; 0.5) {
+      state.textContent = `${bearing(obs)} OBS · ${bearing(radial)} radial → CDI centered · ${flag}`;
+      instrumentReadout.textContent = `CDI CENTERED · ${flag}`;
     } else {
       const side = needleDegrees &lt; 0 ? &#x27;LEFT&#x27; : &#x27;RIGHT&#x27;;
-      const amount = Math.abs(courseError) &gt;= 10 ? &#x27;FULL &#x27; : `${Math.abs(courseError).toFixed(0)}° `;
-      cdiReadout.textContent = `CDI: ${amount}${side}`;
-    }
-
-    if (flag === &#x27;OFF&#x27;) {
-      stateLine.textContent = `${padBearing(obs)} OBS ↔ ${padBearing(radial)} radial = 90° → TO/FROM OFF`;
-    } else if (flag === &#x27;FROM&#x27;) {
-      stateLine.textContent = `${padBearing(obs)} OBS · ${padBearing(radial)} radial → FROM`;
-    } else {
-      stateLine.textContent = `${padBearing(obs)} OBS · ${padBearing(radial)} radial → TO`;
+      const amount = Math.abs(courseError) &gt;= 10 ? &#x27;FULL&#x27; : `${Math.abs(courseError).toFixed(0)}°`;
+      state.textContent = `${bearing(obs)} OBS · ${bearing(radial)} radial → CDI ${amount} ${side} · ${flag}`;
+      instrumentReadout.textContent = `CDI ${amount} ${side} · ${flag}`;
     }
   }
 
-  obsControl.addEventListener(&#x27;input&#x27;, update);
-  radialControl.addEventListener(&#x27;input&#x27;, update);
+  function currentGpsScale() {
+    return gpsScales[gpsPhaseControl.value];
+  }
 
-  root.querySelectorAll(&#x27;[data-obs][data-radial]&#x27;).forEach((button) =&gt; {
+  function updateGpsScale(resetError = false) {
+    const config = currentGpsScale();
+    gpsErrorControl.min = String(-config.scale);
+    gpsErrorControl.max = String(config.scale);
+    gpsErrorControl.step = String(config.scale / 5);
+    if (resetError) gpsErrorControl.value = String(config.scale);
+    gpsScaleValue.textContent = `±${config.scale} NM`;
+  }
+
+  function updateGps() {
+    const course = Number(gpsCourseControl.value);
+    const error = Number(gpsErrorControl.value);
+    const valid = gpsSignal.checked;
+    const config = currentGpsScale();
+    const fraction = Math.max(-1, Math.min(1, error / config.scale));
+    const dots = Math.abs(fraction) * 5;
+    const side = error &lt; 0 ? &#x27;left&#x27; : error &gt; 0 ? &#x27;right&#x27; : &#x27;&#x27;;
+    const needleSide = error &gt; 0 ? &#x27;LEFT&#x27; : error &lt; 0 ? &#x27;RIGHT&#x27; : &#x27;&#x27;;
+
+    gpsCourseValue.textContent = bearing(course);
+    gpsErrorValue.textContent = error === 0 ? &#x27;0 NM · on course&#x27; : `${Math.abs(error).toFixed(config.decimals)} NM ${side}`;
+    sourceLabel.textContent = config.label;
+    instrumentScale.textContent = `Full scale ±${config.scale} NM · each dot ${(config.scale / 5).toFixed(config.decimals)} NM`;
+    drawCourseCard(course);
+    setSense(valid ? &#x27;TO&#x27; : &#x27;OFF&#x27;);
+    setSignalValid(valid);
+    setNeedle(-fraction * 100, valid);
+
+    const planeY = 220 + fraction * 90;
+    gpsAircraft.setAttribute(&#x27;transform&#x27;, `translate(285 ${planeY.toFixed(1)}) rotate(90)`);
+    gpsCrossTrack.setAttribute(&#x27;y2&#x27;, planeY.toFixed(1));
+    gpsDistanceLabel.setAttribute(&#x27;y&#x27;, (220 + fraction * 45 + (fraction &lt; 0 ? -10 : 18)).toFixed(1));
+    gpsDistanceLabel.textContent = error === 0 ? &#x27;ON COURSE&#x27; : `${Math.abs(error).toFixed(config.decimals)} NM`;
+    gpsSideLabel.setAttribute(&#x27;y&#x27;, (planeY + (fraction &lt; 0 ? -38 : 48)).toFixed(1));
+    gpsSideLabel.textContent = error === 0 ? &#x27;Aircraft on desired track&#x27; : `${Math.abs(error).toFixed(config.decimals)} NM ${side} of track`;
+
+    if (!valid) {
+      state.textContent = &#x27;GPS guidance unreliable → NAV flag displayed&#x27;;
+      instrumentReadout.textContent = &#x27;DO NOT USE CDI&#x27;;
+    } else if (error === 0) {
+      state.textContent = `${bearing(course)} desired track · aircraft on course → CDI centered`;
+      instrumentReadout.textContent = &#x27;CDI CENTERED · TO&#x27;;
+    } else {
+      const scaleText = Math.abs(fraction) &gt;= 1 ? &#x27;FULL&#x27; : `${dots.toFixed(1)} DOT${Math.abs(dots - 1) &lt; 0.01 ? &#x27;&#x27; : &#x27;S&#x27;}`;
+      state.textContent = `${Math.abs(error).toFixed(config.decimals)} NM ${side} of track → CDI ${scaleText} ${needleSide}`;
+      instrumentReadout.textContent = `CDI ${scaleText} ${needleSide}`;
+    }
+  }
+
+  function showSource(nextSource) {
+    source = nextSource;
+    sourceButtons.forEach((button) =&gt; button.setAttribute(&#x27;aria-pressed&#x27;, String(button.dataset.source === source)));
+    vorControls.classList.toggle(&#x27;hidden&#x27;, source !== &#x27;vor&#x27;);
+    gpsControls.classList.toggle(&#x27;hidden&#x27;, source !== &#x27;gps&#x27;);
+    vorMap.classList.toggle(&#x27;hidden&#x27;, source !== &#x27;vor&#x27;);
+    gpsMap.classList.toggle(&#x27;hidden&#x27;, source !== &#x27;gps&#x27;);
+    mapHeading.textContent = source === &#x27;vor&#x27; ? &#x27;Aircraft position&#x27; : &#x27;GPS cross-track position&#x27;;
+    if (source === &#x27;vor&#x27;) updateVor(); else updateGps();
+  }
+
+  sourceButtons.forEach((button) =&gt; button.addEventListener(&#x27;click&#x27;, () =&gt; showSource(button.dataset.source)));
+  obsControl.addEventListener(&#x27;input&#x27;, updateVor);
+  radialControl.addEventListener(&#x27;input&#x27;, updateVor);
+  vorSignal.addEventListener(&#x27;change&#x27;, updateVor);
+  gpsCourseControl.addEventListener(&#x27;input&#x27;, updateGps);
+  gpsErrorControl.addEventListener(&#x27;input&#x27;, updateGps);
+  gpsSignal.addEventListener(&#x27;change&#x27;, updateGps);
+  gpsPhaseControl.addEventListener(&#x27;change&#x27;, () =&gt; {
+    updateGpsScale(true);
+    updateGps();
+  });
+
+  root.querySelectorAll(&#x27;[data-vor-obs][data-vor-radial]&#x27;).forEach((button) =&gt; {
     button.addEventListener(&#x27;click&#x27;, () =&gt; {
-      obsControl.value = button.dataset.obs;
-      radialControl.value = button.dataset.radial;
-      update();
+      obsControl.value = button.dataset.vorObs;
+      radialControl.value = button.dataset.vorRadial;
+      vorSignal.checked = true;
+      updateVor();
     });
   });
 
-  update();
+  root.querySelectorAll(&#x27;[data-gps-fraction]&#x27;).forEach((button) =&gt; {
+    button.addEventListener(&#x27;click&#x27;, () =&gt; {
+      gpsErrorControl.value = String(currentGpsScale().scale * Number(button.dataset.gpsFraction));
+      gpsSignal.checked = true;
+      updateGps();
+    });
+  });
+
+  updateGpsScale(true);
+  showSource(&#x27;vor&#x27;);
 })();
 &lt;/script&gt;
 
