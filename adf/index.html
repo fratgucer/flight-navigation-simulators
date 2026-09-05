@@ -1005,6 +1005,20 @@ html&gt;body{padding:0}&lt;/style&gt;
     font-weight: 500;
   }
 
+  #adf-rmi-simulator .mode-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 8px 0 10px;
+  }
+
+  #adf-rmi-simulator button[aria-pressed=&quot;true&quot;] {
+    color: var(--primary-foreground);
+    background: var(--foreground);
+    border-color: transparent;
+  }
+
   #adf-rmi-simulator .instrument {
     display: block;
     width: min(100%, 540px);
@@ -1120,12 +1134,18 @@ html&gt;body{padding:0}&lt;/style&gt;
 &lt;/style&gt;
 
 &lt;section id=&quot;adf-rmi-simulator&quot; aria-labelledby=&quot;adf-rmi-title&quot;&gt;
-  &lt;h2 id=&quot;adf-rmi-title&quot;&gt;Fixed-Card ADF Simulator&lt;/h2&gt;
+  &lt;h2 id=&quot;adf-rmi-title&quot;&gt;ADF / RMI Simulator&lt;/h2&gt;
+
+  &lt;div class=&quot;mode-row&quot; aria-label=&quot;Indicator type&quot;&gt;
+    &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-mode=&quot;fixed&quot; aria-pressed=&quot;false&quot;&gt;Fixed Card ADF&lt;/button&gt;
+    &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-mode=&quot;rmi&quot; aria-pressed=&quot;true&quot;&gt;RMI&lt;/button&gt;
+  &lt;/div&gt;
+
   &lt;p id=&quot;adf-state&quot; class=&quot;state-line tabular-nums&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
 
   &lt;svg class=&quot;instrument&quot; viewBox=&quot;0 0 520 520&quot; role=&quot;img&quot; aria-labelledby=&quot;rmi-title rmi-desc&quot;&gt;
-    &lt;title id=&quot;rmi-title&quot;&gt;Fixed-card ADF indicator&lt;/title&gt;
-    &lt;desc id=&quot;rmi-desc&quot;&gt;North and zero remain at the top of the fixed card. The single needle arrowhead shows the relative bearing to the NDB.&lt;/desc&gt;
+    &lt;title id=&quot;rmi-title&quot;&gt;ADF and RMI bearing indicator&lt;/title&gt;
+    &lt;desc id=&quot;rmi-desc&quot;&gt;A single-headed needle points toward the NDB. In RMI mode the compass card turns with magnetic heading. In fixed-card mode north remains at the top.&lt;/desc&gt;
 
     &lt;circle class=&quot;bezel&quot; cx=&quot;260&quot; cy=&quot;260&quot; r=&quot;238&quot;/&gt;
     &lt;circle class=&quot;dial&quot; cx=&quot;260&quot; cy=&quot;260&quot; r=&quot;218&quot;/&gt;
@@ -1149,23 +1169,23 @@ html&gt;body{padding:0}&lt;/style&gt;
 
   &lt;div class=&quot;controls&quot;&gt;
     &lt;label class=&quot;control-label form-label&quot; for=&quot;heading-control&quot;&gt;
-      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;Magnetic heading&lt;/span&gt;&lt;span id=&quot;heading-value&quot; class=&quot;tabular-nums&quot;&gt;230°&lt;/span&gt;&lt;/span&gt;
-      &lt;input id=&quot;heading-control&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;359&quot; step=&quot;1&quot; value=&quot;230&quot;/&gt;
+      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;Magnetic heading&lt;/span&gt;&lt;span id=&quot;heading-value&quot; class=&quot;tabular-nums&quot;&gt;000°&lt;/span&gt;&lt;/span&gt;
+      &lt;input id=&quot;heading-control&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;359&quot; step=&quot;1&quot; value=&quot;0&quot;/&gt;
     &lt;/label&gt;
 
     &lt;label class=&quot;control-label form-label&quot; for=&quot;relative-control&quot;&gt;
-      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;Relative bearing&lt;/span&gt;&lt;span id=&quot;relative-value&quot; class=&quot;tabular-nums&quot;&gt;012°&lt;/span&gt;&lt;/span&gt;
-      &lt;input id=&quot;relative-control&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;359&quot; step=&quot;1&quot; value=&quot;12&quot;/&gt;
+      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;Relative bearing&lt;/span&gt;&lt;span id=&quot;relative-value&quot; class=&quot;tabular-nums&quot;&gt;240°&lt;/span&gt;&lt;/span&gt;
+      &lt;input id=&quot;relative-control&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;359&quot; step=&quot;1&quot; value=&quot;240&quot;/&gt;
     &lt;/label&gt;
 
     &lt;div class=&quot;preset-row&quot; aria-label=&quot;ADF examples&quot;&gt;
-      &lt;button class=&quot;btn btn-primary&quot; type=&quot;button&quot; data-heading=&quot;230&quot; data-relative=&quot;12&quot;&gt;Tracking example: RB 012°&lt;/button&gt;
-      &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-heading=&quot;0&quot; data-relative=&quot;240&quot;&gt;Instrument example: RB 240°&lt;/button&gt;
+      &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-heading=&quot;0&quot; data-relative=&quot;240&quot;&gt;Image example: 240°&lt;/button&gt;
+      &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-heading=&quot;230&quot; data-relative=&quot;12&quot;&gt;Tracking example: RB 012°&lt;/button&gt;
       &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-heading=&quot;90&quot; data-relative=&quot;0&quot;&gt;NDB straight ahead&lt;/button&gt;
       &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-heading=&quot;90&quot; data-relative=&quot;90&quot;&gt;NDB right wing&lt;/button&gt;
     &lt;/div&gt;
 
-    &lt;p class=&quot;hint&quot;&gt;Fixed-card ADF: read relative bearing at the needle head. N stays at the aircraft nose. Magnetic bearing TO = MH + RB.&lt;/p&gt;
+    &lt;p id=&quot;adf-hint&quot; class=&quot;hint&quot;&gt;&lt;/p&gt;
   &lt;/div&gt;
 &lt;/section&gt;
 
@@ -1178,6 +1198,8 @@ html&gt;body{padding:0}&lt;/style&gt;
   const relativeControl = root.querySelector(&#x27;#relative-control&#x27;);
   const headingValue = root.querySelector(&#x27;#heading-value&#x27;);
   const relativeValue = root.querySelector(&#x27;#relative-value&#x27;);
+  const modeButtons = [...root.querySelectorAll(&#x27;[data-mode]&#x27;)];
+  const hint = root.querySelector(&#x27;#adf-hint&#x27;);
   const state = root.querySelector(&#x27;#adf-state&#x27;);
   const ticksGroup = root.querySelector(&#x27;#compass-ticks&#x27;);
   const labelsGroup = root.querySelector(&#x27;#compass-labels&#x27;);
@@ -1189,6 +1211,7 @@ html&gt;body{padding:0}&lt;/style&gt;
   const cy = 260;
   const tickElements = [];
   const labelElements = [];
+  let mode = &#x27;rmi&#x27;;
 
   function normalize(value) {
     return ((Math.round(value) % 360) + 360) % 360;
@@ -1223,9 +1246,9 @@ html&gt;body{padding:0}&lt;/style&gt;
     labelElements.push({value, text});
   }
 
-  function drawFixedCard() {
+  function drawCard(heading) {
     tickElements.forEach(({value, line}) =&gt; {
-      const angle = value;
+      const angle = normalize(value - heading);
       const outer = point(angle, 207);
       const inner = point(angle, value % 30 === 0 ? 188 : 195);
       line.setAttribute(&#x27;x1&#x27;, outer.x.toFixed(1));
@@ -1235,7 +1258,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     });
 
     labelElements.forEach(({value, text}) =&gt; {
-      const angle = value;
+      const angle = normalize(value - heading);
       const position = point(angle, 166);
       text.setAttribute(&#x27;x&#x27;, position.x.toFixed(1));
       text.setAttribute(&#x27;y&#x27;, position.y.toFixed(1));
@@ -1248,14 +1271,33 @@ html&gt;body{padding:0}&lt;/style&gt;
     const magneticTo = normalize(heading + relative);
     headingValue.textContent = bearing(heading);
     relativeValue.textContent = bearing(relative);
-    state.textContent = `MH ${bearing(heading)} + RB ${bearing(relative)} = MB TO NDB ${bearing(magneticTo)}`;
+    const cardHeading = mode === &#x27;rmi&#x27; ? heading : 0;
+    drawCard(cardHeading);
     needle.setAttribute(&#x27;transform&#x27;, `rotate(${relative} ${cx} ${cy})`);
-    headReadout.textContent = `Needle head: RB ${bearing(relative)} TO NDB`;
-    tailReadout.textContent = `Magnetic bearing TO: ${bearing(magneticTo)}`;
+
+    if (mode === &#x27;rmi&#x27;) {
+      state.textContent = `RMI · heading ${bearing(heading)} · needle reads ${bearing(magneticTo)} TO the NDB`;
+      headReadout.textContent = `Needle head: ${bearing(magneticTo)} TO`;
+      tailReadout.textContent = `Needle tail: ${bearing(magneticTo + 180)} FROM`;
+      hint.textContent = &#x27;RMI: the compass card turns with heading. Read magnetic bearing directly at the needle head.&#x27;;
+    } else {
+      state.textContent = `Fixed Card · MH ${bearing(heading)} + RB ${bearing(relative)} = MB TO ${bearing(magneticTo)}`;
+      headReadout.textContent = `Needle head: RB ${bearing(relative)} TO`;
+      tailReadout.textContent = `Magnetic bearing TO: ${bearing(magneticTo)}`;
+      hint.textContent = &#x27;Fixed Card ADF: N/0 stays at the top. Read relative bearing, then use MH + RB = magnetic bearing TO.&#x27;;
+    }
   }
 
   headingControl.addEventListener(&#x27;input&#x27;, update);
   relativeControl.addEventListener(&#x27;input&#x27;, update);
+
+  modeButtons.forEach((button) =&gt; {
+    button.addEventListener(&#x27;click&#x27;, () =&gt; {
+      mode = button.dataset.mode;
+      modeButtons.forEach((item) =&gt; item.setAttribute(&#x27;aria-pressed&#x27;, String(item.dataset.mode === mode)));
+      update();
+    });
+  });
 
   root.querySelectorAll(&#x27;[data-heading][data-relative]&#x27;).forEach((button) =&gt; {
     button.addEventListener(&#x27;click&#x27;, () =&gt; {
@@ -1265,7 +1307,6 @@ html&gt;body{padding:0}&lt;/style&gt;
     });
   });
 
-  drawFixedCard();
   update();
 })();
 &lt;/script&gt;
