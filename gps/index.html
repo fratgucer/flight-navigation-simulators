@@ -1535,7 +1535,13 @@ html&gt;body{padding:0}&lt;/style&gt;
     }
     senseGroup.classList.remove(&#x27;hidden&#x27;);
     senseLabel.textContent = flag;
-    senseArrow.setAttribute(&#x27;points&#x27;, flag === &#x27;TO&#x27; ? &#x27;330,126 318,149 342,149&#x27; : &#x27;330,181 318,158 342,158&#x27;);
+    if (flag === &#x27;TO&#x27;) {
+      senseArrow.setAttribute(&#x27;points&#x27;, &#x27;330,126 318,149 342,149&#x27;);
+      senseLabel.setAttribute(&#x27;y&#x27;, &#x27;174&#x27;);
+    } else {
+      senseLabel.setAttribute(&#x27;y&#x27;, &#x27;137&#x27;);
+      senseArrow.setAttribute(&#x27;points&#x27;, &#x27;330,181 318,155 342,155&#x27;);
+    }
   }
 
   function setSignalValid(valid) {
