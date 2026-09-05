@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>Gps Cdi Enroute Simulator</title>
+<title>Combined Vor Gps Cdi</title>
 <style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
 </head>
 <body>
-<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Gps Cdi Enroute Simulator" srcdoc="&lt;!doctype html&gt;
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Combined Vor Gps Cdi" srcdoc="&lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
 &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
 &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
-&lt;title&gt;Gps Cdi Enroute Simulator&lt;/title&gt;
+&lt;title&gt;Combined Vor Gps Cdi&lt;/title&gt;
 &lt;style&gt;:root {
   color-scheme: light dark;
   background-color: var(
@@ -989,280 +989,704 @@ html&gt;body{padding:0}&lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;style&gt;
-  #gps-cdi-enroute-simulator {
+  #combined-cdi-simulator {
     width: 100%;
     color: var(--foreground);
   }
 
-  #gps-cdi-enroute-simulator h2 {
-    margin: 0 0 8px;
+  #combined-cdi-simulator h2,
+  #combined-cdi-simulator h3,
+  #combined-cdi-simulator p {
+    margin: 0;
+  }
+
+  #combined-cdi-simulator h2,
+  #combined-cdi-simulator h3,
+  #combined-cdi-simulator .state-line {
     text-align: center;
   }
 
-  #gps-cdi-enroute-simulator .scale-answer,
-  #gps-cdi-enroute-simulator .live-state {
-    margin: 0;
-    text-align: center;
+  #combined-cdi-simulator .source-row,
+  #combined-cdi-simulator .preset-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  #combined-cdi-simulator .source-row {
+    margin: 10px 0 7px;
+  }
+
+  #combined-cdi-simulator .state-line {
+    min-height: 1.5em;
     font-weight: 500;
   }
 
-  #gps-cdi-enroute-simulator .scale-answer {
-    color: var(--green);
-  }
-
-  #gps-cdi-enroute-simulator .live-state {
-    margin-top: 5px;
-  }
-
-  #gps-cdi-enroute-simulator .visuals {
+  #combined-cdi-simulator .visuals {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 18px;
-    margin-top: 12px;
     align-items: start;
+    margin-top: 12px;
   }
 
-  #gps-cdi-enroute-simulator .visual-block {
+  #combined-cdi-simulator .visual-block {
     min-width: 0;
-    text-align: center;
   }
 
-  #gps-cdi-enroute-simulator .visual-block h3 {
-    margin: 0 0 4px;
-  }
-
-  #gps-cdi-enroute-simulator .diagram {
+  #combined-cdi-simulator .diagram {
     display: block;
     width: 100%;
     height: auto;
   }
 
-  #gps-cdi-enroute-simulator .field,
-  #gps-cdi-enroute-simulator .dial {
+  #combined-cdi-simulator .map-face,
+  #combined-cdi-simulator .instrument-bezel {
     fill: color-mix(in srgb, var(--card) 82%, transparent);
     stroke: var(--border);
+    stroke-width: 4;
+  }
+
+  #combined-cdi-simulator .instrument-ring {
+    fill: color-mix(in srgb, var(--background) 82%, var(--foreground));
+    stroke: var(--muted-foreground);
+    stroke-width: 4;
+  }
+
+  #combined-cdi-simulator .instrument-centre {
+    fill: color-mix(in srgb, var(--card) 86%, var(--background));
+  }
+
+  #combined-cdi-simulator .minor-line,
+  #combined-cdi-simulator .card-tick {
+    stroke: var(--muted-foreground);
+    stroke-width: 2;
+  }
+
+  #combined-cdi-simulator .card-tick-major {
+    stroke: var(--foreground);
+    stroke-width: 4;
+  }
+
+  #combined-cdi-simulator .map-course,
+  #combined-cdi-simulator .gps-course {
+    stroke: var(--blue);
+    stroke-width: 7;
+    stroke-linecap: round;
+  }
+
+  #combined-cdi-simulator .map-radial,
+  #combined-cdi-simulator .cross-track {
+    stroke: var(--orange);
+    stroke-width: 5;
+    stroke-linecap: round;
+  }
+
+  #combined-cdi-simulator .cross-track {
+    stroke-dasharray: 7 7;
+  }
+
+  #combined-cdi-simulator .cdi-needle {
+    stroke: var(--yellow);
+    stroke-width: 7;
+    stroke-linecap: square;
+    transition: transform 150ms ease, opacity 150ms ease;
+  }
+
+  #combined-cdi-simulator .cdi-arrow {
+    fill: var(--yellow);
+    transition: transform 150ms ease, opacity 150ms ease;
+  }
+
+  #combined-cdi-simulator .course-index {
+    fill: var(--yellow);
+  }
+
+  #combined-cdi-simulator .dot {
+    fill: var(--muted-foreground);
+  }
+
+  #combined-cdi-simulator .centre-ring,
+  #combined-cdi-simulator .station-ring,
+  #combined-cdi-simulator .aircraft-ring {
+    fill: var(--card);
+    stroke: var(--foreground);
     stroke-width: 3;
   }
 
-  #gps-cdi-enroute-simulator .course {
-    stroke: var(--purple);
-    stroke-width: 8;
-    stroke-linecap: round;
-  }
-
-  #gps-cdi-enroute-simulator .error-line {
+  #combined-cdi-simulator .aircraft-ring {
     stroke: var(--orange);
-    stroke-width: 4;
-    stroke-dasharray: 8 7;
   }
 
-  #gps-cdi-enroute-simulator .aircraft {
+  #combined-cdi-simulator .station-mark,
+  #combined-cdi-simulator .aircraft-mark {
     fill: var(--foreground);
   }
 
-  #gps-cdi-enroute-simulator .dot {
-    fill: var(--muted-foreground);
-  }
-
-  #gps-cdi-enroute-simulator .needle {
-    stroke: var(--blue);
-    stroke-width: 10;
-    stroke-linecap: round;
-  }
-
-  #gps-cdi-enroute-simulator .label {
+  #combined-cdi-simulator .card-label,
+  #combined-cdi-simulator .svg-label {
     fill: var(--foreground);
-    font-size: 19px;
-    font-weight: 500;
-  }
-
-  #gps-cdi-enroute-simulator .small-label {
-    fill: var(--muted-foreground);
-    font-size: 16px;
-  }
-
-  #gps-cdi-enroute-simulator .error-label {
-    fill: var(--orange);
     font-size: 18px;
     font-weight: 500;
   }
 
-  #gps-cdi-enroute-simulator .mode-window {
-    fill: color-mix(in srgb, var(--accent) 78%, transparent);
+  #combined-cdi-simulator .svg-small {
+    fill: var(--muted-foreground);
+    font-size: 14px;
+  }
+
+  #combined-cdi-simulator .source-window {
+    fill: color-mix(in srgb, var(--accent) 80%, transparent);
     stroke: var(--border);
     stroke-width: 2;
   }
 
-  #gps-cdi-enroute-simulator .mode-text {
+  #combined-cdi-simulator .source-text {
     fill: var(--accent-foreground);
-    font-size: 19px;
+    font-size: 17px;
     font-weight: 500;
   }
 
-  #gps-cdi-enroute-simulator .control-area {
+  #combined-cdi-simulator .sense-arrow {
+    fill: var(--foreground);
+  }
+
+  #combined-cdi-simulator .nav-flag {
+    fill: var(--red);
+  }
+
+  #combined-cdi-simulator .nav-text {
+    fill: var(--primary-foreground);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  #combined-cdi-simulator .obs-knob {
+    fill: color-mix(in srgb, var(--card) 78%, var(--background));
+    stroke: var(--muted-foreground);
+    stroke-width: 4;
+  }
+
+  #combined-cdi-simulator .controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 22px;
     margin-top: 14px;
   }
 
-  #gps-cdi-enroute-simulator .control-head {
+  #combined-cdi-simulator .control-label {
+    display: grid;
+    gap: 6px;
+  }
+
+  #combined-cdi-simulator .control-head {
     display: flex;
     justify-content: space-between;
     gap: 12px;
-    margin-bottom: 6px;
     font-weight: 500;
   }
 
-  #gps-cdi-enroute-simulator .range-ends {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2px;
+  #combined-cdi-simulator .wide-control,
+  #combined-cdi-simulator .preset-row,
+  #combined-cdi-simulator .hint {
+    grid-column: 1 / -1;
+  }
+
+  #combined-cdi-simulator .hint {
+    text-align: center;
     color: var(--muted-foreground);
   }
 
-  #gps-cdi-enroute-simulator .presets {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 12px;
+  #combined-cdi-simulator .hidden {
+    display: none;
   }
 
-  @media (max-width: 560px) {
-    #gps-cdi-enroute-simulator .visuals {
+  #combined-cdi-simulator button[aria-pressed=&quot;true&quot;] {
+    color: var(--primary-foreground);
+    background: var(--foreground);
+    border-color: transparent;
+  }
+
+  @media (max-width: 720px) {
+    #combined-cdi-simulator .visuals,
+    #combined-cdi-simulator .controls {
       grid-template-columns: 1fr;
+    }
+
+    #combined-cdi-simulator .wide-control,
+    #combined-cdi-simulator .preset-row,
+    #combined-cdi-simulator .hint {
+      grid-column: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #combined-cdi-simulator .cdi-needle,
+    #combined-cdi-simulator .cdi-arrow {
+      transition: none;
     }
   }
 &lt;/style&gt;
 
-&lt;section id=&quot;gps-cdi-enroute-simulator&quot; aria-labelledby=&quot;gps-cdi-title&quot;&gt;
-  &lt;h2 id=&quot;gps-cdi-title&quot;&gt;GPS CDI — En-route Mode&lt;/h2&gt;
-  &lt;p class=&quot;scale-answer&quot;&gt;Full-scale = ±5 NM from centre · Each dot = 1 NM&lt;/p&gt;
-  &lt;p id=&quot;gps-live-state&quot; class=&quot;live-state tabular-nums&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+&lt;section id=&quot;combined-cdi-simulator&quot; aria-labelledby=&quot;combined-cdi-title&quot;&gt;
+  &lt;h2 id=&quot;combined-cdi-title&quot;&gt;VOR / GPS Shared CDI Simulator&lt;/h2&gt;
+
+  &lt;div class=&quot;source-row&quot; aria-label=&quot;Navigation source&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-source=&quot;vor&quot; aria-pressed=&quot;true&quot;&gt;VOR&lt;/button&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-source=&quot;gps&quot; aria-pressed=&quot;false&quot;&gt;GPS&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;p id=&quot;combined-state&quot; class=&quot;state-line tabular-nums&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
 
   &lt;div class=&quot;visuals&quot;&gt;
     &lt;div class=&quot;visual-block&quot;&gt;
-      &lt;h3&gt;Top view&lt;/h3&gt;
-      &lt;svg class=&quot;diagram&quot; viewBox=&quot;0 0 460 360&quot; role=&quot;img&quot; aria-labelledby=&quot;gps-map-title gps-map-desc&quot;&gt;
-        &lt;title id=&quot;gps-map-title&quot;&gt;Aircraft cross-track position relative to the desired GPS course&lt;/title&gt;
-        &lt;desc id=&quot;gps-map-desc&quot;&gt;Moving the aircraft left or right of the desired course changes the GPS CDI needle indication.&lt;/desc&gt;
+      &lt;h3 id=&quot;map-heading&quot;&gt;Aircraft position&lt;/h3&gt;
+      &lt;svg class=&quot;diagram&quot; viewBox=&quot;0 0 480 440&quot; role=&quot;img&quot; aria-labelledby=&quot;combined-map-title combined-map-desc&quot;&gt;
+        &lt;title id=&quot;combined-map-title&quot;&gt;Top view of the selected navigation course&lt;/title&gt;
+        &lt;desc id=&quot;combined-map-desc&quot;&gt;Shows aircraft position relative to a VOR radial or GPS desired track.&lt;/desc&gt;
 
-        &lt;rect class=&quot;field&quot; x=&quot;25&quot; y=&quot;30&quot; width=&quot;410&quot; height=&quot;300&quot; rx=&quot;10&quot;/&gt;
-        &lt;text class=&quot;small-label&quot; x=&quot;65&quot; y=&quot;142&quot;&gt;Desired GPS course&lt;/text&gt;
-        &lt;line class=&quot;course&quot; x1=&quot;55&quot; y1=&quot;180&quot; x2=&quot;402&quot; y2=&quot;180&quot;/&gt;
-        &lt;polygon fill=&quot;var(--purple)&quot; points=&quot;420,180 393,164 393,196&quot;/&gt;
-
-        &lt;line id=&quot;cross-track-line&quot; class=&quot;error-line&quot; x1=&quot;326&quot; y1=&quot;180&quot; x2=&quot;326&quot; y2=&quot;265&quot;/&gt;
-        &lt;text id=&quot;cross-track-label&quot; class=&quot;error-label&quot; x=&quot;365&quot; y=&quot;226&quot; text-anchor=&quot;middle&quot;&gt;5 NM&lt;/text&gt;
-
-        &lt;g id=&quot;gps-aircraft&quot; transform=&quot;translate(270 265) rotate(90)&quot;&gt;
-          &lt;path class=&quot;aircraft&quot; d=&quot;M0,-29 L7,-7 L25,2 L25,8 L7,5 L5,25 L12,31 L12,35 L0,31 L-12,35 L-12,31 L-5,25 L-7,5 L-25,8 L-25,2 L-7,-7 Z&quot;/&gt;
+        &lt;g id=&quot;vor-map&quot;&gt;
+          &lt;circle class=&quot;map-face&quot; cx=&quot;240&quot; cy=&quot;220&quot; r=&quot;172&quot;/&gt;
+          &lt;line class=&quot;minor-line&quot; x1=&quot;240&quot; y1=&quot;48&quot; x2=&quot;240&quot; y2=&quot;66&quot;/&gt;
+          &lt;line class=&quot;minor-line&quot; x1=&quot;412&quot; y1=&quot;220&quot; x2=&quot;394&quot; y2=&quot;220&quot;/&gt;
+          &lt;line class=&quot;minor-line&quot; x1=&quot;240&quot; y1=&quot;392&quot; x2=&quot;240&quot; y2=&quot;374&quot;/&gt;
+          &lt;line class=&quot;minor-line&quot; x1=&quot;68&quot; y1=&quot;220&quot; x2=&quot;86&quot; y2=&quot;220&quot;/&gt;
+          &lt;text class=&quot;svg-label&quot; x=&quot;240&quot; y=&quot;28&quot; text-anchor=&quot;middle&quot;&gt;N&lt;/text&gt;
+          &lt;text class=&quot;svg-label&quot; x=&quot;446&quot; y=&quot;227&quot; text-anchor=&quot;middle&quot;&gt;E&lt;/text&gt;
+          &lt;text class=&quot;svg-label&quot; x=&quot;240&quot; y=&quot;430&quot; text-anchor=&quot;middle&quot;&gt;S&lt;/text&gt;
+          &lt;text class=&quot;svg-label&quot; x=&quot;34&quot; y=&quot;227&quot; text-anchor=&quot;middle&quot;&gt;W&lt;/text&gt;
+          &lt;line id=&quot;vor-selected-course&quot; class=&quot;map-course&quot;/&gt;
+          &lt;polygon id=&quot;vor-course-arrow&quot; fill=&quot;var(--blue)&quot;/&gt;
+          &lt;line id=&quot;vor-aircraft-radial&quot; class=&quot;map-radial&quot;/&gt;
+          &lt;circle class=&quot;station-ring&quot; cx=&quot;240&quot; cy=&quot;220&quot; r=&quot;23&quot;/&gt;
+          &lt;path class=&quot;station-mark&quot; d=&quot;M240 203 L255 212 L250 231 L230 231 L225 212 Z&quot;/&gt;
+          &lt;text class=&quot;svg-small&quot; x=&quot;240&quot; y=&quot;260&quot; text-anchor=&quot;middle&quot;&gt;VOR&lt;/text&gt;
+          &lt;g id=&quot;vor-aircraft&quot;&gt;
+            &lt;circle class=&quot;aircraft-ring&quot; cx=&quot;0&quot; cy=&quot;0&quot; r=&quot;22&quot;/&gt;
+            &lt;path class=&quot;aircraft-mark&quot; d=&quot;M0,-14 L4,-4 L14,1 L14,5 L4,3 L3,12 L8,16 L8,18 L0,16 L-8,18 L-8,16 L-3,12 L-4,3 L-14,5 L-14,1 L-4,-4 Z&quot;/&gt;
+          &lt;/g&gt;
         &lt;/g&gt;
-        &lt;text id=&quot;aircraft-side-label&quot; class=&quot;small-label&quot; x=&quot;270&quot; y=&quot;311&quot; text-anchor=&quot;middle&quot;&gt;5 NM right of course&lt;/text&gt;
+
+        &lt;g id=&quot;gps-map&quot; class=&quot;hidden&quot;&gt;
+          &lt;rect class=&quot;map-face&quot; x=&quot;38&quot; y=&quot;46&quot; width=&quot;404&quot; height=&quot;344&quot; rx=&quot;12&quot;/&gt;
+          &lt;text class=&quot;svg-small&quot; x=&quot;68&quot; y=&quot;156&quot;&gt;Desired GPS track&lt;/text&gt;
+          &lt;line class=&quot;gps-course&quot; x1=&quot;68&quot; y1=&quot;220&quot; x2=&quot;404&quot; y2=&quot;220&quot;/&gt;
+          &lt;polygon fill=&quot;var(--blue)&quot; points=&quot;425,220 396,203 396,237&quot;/&gt;
+          &lt;line id=&quot;gps-cross-track-line&quot; class=&quot;cross-track&quot; x1=&quot;330&quot; y1=&quot;220&quot; x2=&quot;330&quot; y2=&quot;305&quot;/&gt;
+          &lt;text id=&quot;gps-distance-label&quot; class=&quot;svg-label&quot; x=&quot;370&quot; y=&quot;268&quot; text-anchor=&quot;middle&quot;&gt;5 NM&lt;/text&gt;
+          &lt;g id=&quot;gps-aircraft&quot; transform=&quot;translate(285 305) rotate(90)&quot;&gt;
+            &lt;path class=&quot;aircraft-mark&quot; d=&quot;M0,-27 L7,-7 L24,2 L24,8 L7,5 L5,23 L12,29 L12,33 L0,29 L-12,33 L-12,29 L-5,23 L-7,5 L-24,8 L-24,2 L-7,-7 Z&quot;/&gt;
+          &lt;/g&gt;
+          &lt;text id=&quot;gps-side-label&quot; class=&quot;svg-small&quot; x=&quot;285&quot; y=&quot;355&quot; text-anchor=&quot;middle&quot;&gt;5 NM right of track&lt;/text&gt;
+        &lt;/g&gt;
       &lt;/svg&gt;
     &lt;/div&gt;
 
     &lt;div class=&quot;visual-block&quot;&gt;
-      &lt;h3&gt;GPS CDI&lt;/h3&gt;
-      &lt;svg class=&quot;diagram&quot; viewBox=&quot;0 0 460 360&quot; role=&quot;img&quot; aria-labelledby=&quot;gps-ind-title gps-ind-desc&quot;&gt;
-        &lt;title id=&quot;gps-ind-title&quot;&gt;GPS course deviation indicator in en-route mode&lt;/title&gt;
-        &lt;desc id=&quot;gps-ind-desc&quot;&gt;Five dots on each side represent one nautical mile each, for five nautical miles at full-scale deflection.&lt;/desc&gt;
+      &lt;h3&gt;Realistic CDI / OBS indicator&lt;/h3&gt;
+      &lt;svg class=&quot;diagram&quot; viewBox=&quot;0 0 480 530&quot; role=&quot;img&quot; aria-labelledby=&quot;combined-ind-title combined-ind-desc&quot;&gt;
+        &lt;title id=&quot;combined-ind-title&quot;&gt;Shared VOR and GPS course deviation indicator&lt;/title&gt;
+        &lt;desc id=&quot;combined-ind-desc&quot;&gt;A realistic OBS card with course index, CDI needle, TO FROM indication, source annunciation, and NAV flag.&lt;/desc&gt;
 
-        &lt;circle class=&quot;dial&quot; cx=&quot;230&quot; cy=&quot;180&quot; r=&quot;155&quot;/&gt;
-        &lt;rect class=&quot;mode-window&quot; x=&quot;169&quot; y=&quot;47&quot; width=&quot;122&quot; height=&quot;40&quot; rx=&quot;6&quot;/&gt;
-        &lt;text class=&quot;mode-text&quot; x=&quot;230&quot; y=&quot;73&quot; text-anchor=&quot;middle&quot;&gt;GPS ENR&lt;/text&gt;
+        &lt;circle class=&quot;instrument-bezel&quot; cx=&quot;240&quot; cy=&quot;225&quot; r=&quot;216&quot;/&gt;
+        &lt;circle class=&quot;instrument-ring&quot; cx=&quot;240&quot; cy=&quot;225&quot; r=&quot;194&quot;/&gt;
+        &lt;g id=&quot;course-card-ticks&quot; aria-hidden=&quot;true&quot;&gt;&lt;/g&gt;
+        &lt;g id=&quot;course-card-labels&quot; aria-hidden=&quot;true&quot;&gt;&lt;/g&gt;
+        &lt;circle class=&quot;instrument-centre&quot; cx=&quot;240&quot; cy=&quot;225&quot; r=&quot;135&quot;/&gt;
 
-        &lt;g aria-hidden=&quot;true&quot;&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;130&quot; cy=&quot;180&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;150&quot; cy=&quot;180&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;170&quot; cy=&quot;180&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;190&quot; cy=&quot;180&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;210&quot; cy=&quot;180&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;250&quot; cy=&quot;180&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;270&quot; cy=&quot;180&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;290&quot; cy=&quot;180&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;310&quot; cy=&quot;180&quot; r=&quot;5&quot;/&gt;
-          &lt;circle class=&quot;dot&quot; cx=&quot;330&quot; cy=&quot;180&quot; r=&quot;5&quot;/&gt;
+        &lt;polygon class=&quot;course-index&quot; points=&quot;240,32 226,66 254,66&quot;/&gt;
+
+        &lt;rect class=&quot;source-window&quot; x=&quot;118&quot; y=&quot;112&quot; width=&quot;92&quot; height=&quot;38&quot; rx=&quot;5&quot;/&gt;
+        &lt;text id=&quot;source-label&quot; class=&quot;source-text&quot; x=&quot;164&quot; y=&quot;137&quot; text-anchor=&quot;middle&quot;&gt;VOR&lt;/text&gt;
+
+        &lt;g id=&quot;sense-group&quot;&gt;
+          &lt;polygon id=&quot;sense-arrow&quot; class=&quot;sense-arrow&quot; points=&quot;330,126 318,149 342,149&quot;/&gt;
+          &lt;text id=&quot;sense-label&quot; class=&quot;svg-label&quot; x=&quot;330&quot; y=&quot;174&quot; text-anchor=&quot;middle&quot;&gt;FROM&lt;/text&gt;
         &lt;/g&gt;
 
-        &lt;line id=&quot;gps-cdi-needle&quot; class=&quot;needle&quot; x1=&quot;130&quot; y1=&quot;104&quot; x2=&quot;130&quot; y2=&quot;256&quot;/&gt;
-        &lt;path class=&quot;aircraft&quot; d=&quot;M230 156 L236 172 L267 180 L267 187 L236 183 L234 207 L244 215 L244 220 L230 215 L216 220 L216 215 L226 207 L224 183 L193 187 L193 180 L224 172 Z&quot;/&gt;
+        &lt;g id=&quot;nav-flag&quot; class=&quot;hidden&quot;&gt;
+          &lt;rect class=&quot;nav-flag&quot; x=&quot;218&quot; y=&quot;102&quot; width=&quot;44&quot; height=&quot;62&quot; rx=&quot;3&quot;/&gt;
+          &lt;text class=&quot;nav-text&quot; x=&quot;240&quot; y=&quot;128&quot; text-anchor=&quot;middle&quot;&gt;N&lt;/text&gt;
+          &lt;text class=&quot;nav-text&quot; x=&quot;240&quot; y=&quot;145&quot; text-anchor=&quot;middle&quot;&gt;A&lt;/text&gt;
+          &lt;text class=&quot;nav-text&quot; x=&quot;240&quot; y=&quot;162&quot; text-anchor=&quot;middle&quot;&gt;V&lt;/text&gt;
+        &lt;/g&gt;
 
-        &lt;text id=&quot;gps-cdi-readout&quot; class=&quot;label&quot; x=&quot;230&quot; y=&quot;286&quot; text-anchor=&quot;middle&quot;&gt;FULL LEFT&lt;/text&gt;
-        &lt;text class=&quot;small-label&quot; x=&quot;230&quot; y=&quot;310&quot; text-anchor=&quot;middle&quot;&gt;5 dots × 1 NM = 5 NM&lt;/text&gt;
+        &lt;g aria-hidden=&quot;true&quot;&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;140&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;160&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;180&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;200&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;220&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;260&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;280&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;300&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;320&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+          &lt;circle class=&quot;dot&quot; cx=&quot;340&quot; cy=&quot;225&quot; r=&quot;5&quot;/&gt;
+        &lt;/g&gt;
+
+        &lt;g id=&quot;cdi-needle-group&quot;&gt;
+          &lt;line id=&quot;shared-cdi-needle&quot; class=&quot;cdi-needle&quot; x1=&quot;240&quot; y1=&quot;151&quot; x2=&quot;240&quot; y2=&quot;299&quot;/&gt;
+          &lt;polygon id=&quot;shared-cdi-head&quot; class=&quot;cdi-arrow&quot; points=&quot;240,137 230,158 250,158&quot;/&gt;
+          &lt;polygon id=&quot;shared-cdi-tail&quot; class=&quot;cdi-arrow&quot; points=&quot;240,313 230,292 250,292&quot;/&gt;
+        &lt;/g&gt;
+
+        &lt;circle class=&quot;centre-ring&quot; cx=&quot;240&quot; cy=&quot;225&quot; r=&quot;17&quot;/&gt;
+
+        &lt;circle class=&quot;obs-knob&quot; cx=&quot;82&quot; cy=&quot;473&quot; r=&quot;31&quot;/&gt;
+        &lt;text class=&quot;svg-label&quot; x=&quot;82&quot; y=&quot;480&quot; text-anchor=&quot;middle&quot;&gt;OBS&lt;/text&gt;
+        &lt;text id=&quot;instrument-readout&quot; class=&quot;svg-label&quot; x=&quot;286&quot; y=&quot;465&quot; text-anchor=&quot;middle&quot;&gt;CDI CENTERED&lt;/text&gt;
+        &lt;text id=&quot;instrument-scale&quot; class=&quot;svg-small&quot; x=&quot;286&quot; y=&quot;494&quot; text-anchor=&quot;middle&quot;&gt;VOR: 2° per dot · 10° full scale&lt;/text&gt;
       &lt;/svg&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 
-  &lt;div class=&quot;control-area&quot;&gt;
-    &lt;label class=&quot;form-label&quot; for=&quot;cross-track-control&quot;&gt;
-      &lt;span class=&quot;control-head&quot;&gt;
-        &lt;span&gt;Aircraft cross-track error&lt;/span&gt;
-        &lt;span id=&quot;cross-track-value&quot; class=&quot;tabular-nums&quot;&gt;5.0 NM right&lt;/span&gt;
-      &lt;/span&gt;
-      &lt;input id=&quot;cross-track-control&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;-5&quot; max=&quot;5&quot; step=&quot;1&quot; value=&quot;5&quot;/&gt;
+  &lt;div id=&quot;vor-controls&quot; class=&quot;controls&quot;&gt;
+    &lt;label class=&quot;control-label form-label&quot; for=&quot;combined-obs-control&quot;&gt;
+      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;OBS selected course&lt;/span&gt;&lt;span id=&quot;combined-obs-value&quot; class=&quot;tabular-nums&quot;&gt;000°&lt;/span&gt;&lt;/span&gt;
+      &lt;input id=&quot;combined-obs-control&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;359&quot; step=&quot;1&quot; value=&quot;0&quot;/&gt;
     &lt;/label&gt;
-    &lt;div class=&quot;range-ends text-small&quot;&gt;&lt;span&gt;5 NM left&lt;/span&gt;&lt;span&gt;On course&lt;/span&gt;&lt;span&gt;5 NM right&lt;/span&gt;&lt;/div&gt;
 
-    &lt;div class=&quot;presets&quot; aria-label=&quot;GPS CDI examples&quot;&gt;
-      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-error=&quot;0&quot;&gt;Centered&lt;/button&gt;
-      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-error=&quot;1&quot;&gt;1 dot&lt;/button&gt;
-      &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-error=&quot;5&quot;&gt;Full-scale&lt;/button&gt;
+    &lt;label class=&quot;control-label form-label&quot; for=&quot;combined-radial-control&quot;&gt;
+      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;Aircraft radial&lt;/span&gt;&lt;span id=&quot;combined-radial-value&quot; class=&quot;tabular-nums&quot;&gt;000°&lt;/span&gt;&lt;/span&gt;
+      &lt;input id=&quot;combined-radial-control&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;359&quot; step=&quot;1&quot; value=&quot;0&quot;/&gt;
+    &lt;/label&gt;
+
+    &lt;label class=&quot;form-check wide-control&quot; for=&quot;vor-signal-valid&quot;&gt;
+      &lt;input id=&quot;vor-signal-valid&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot; checked/&gt;
+      &lt;span&gt;VOR signal reliable&lt;/span&gt;
+    &lt;/label&gt;
+
+    &lt;div class=&quot;preset-row&quot;&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-vor-obs=&quot;0&quot; data-vor-radial=&quot;0&quot;&gt;North / centered FROM&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-vor-obs=&quot;350&quot; data-vor-radial=&quot;80&quot;&gt;350° / 080° OFF example&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-vor-obs=&quot;350&quot; data-vor-radial=&quot;170&quot;&gt;350° centered TO&lt;/button&gt;
     &lt;/div&gt;
+
+    &lt;p class=&quot;hint&quot;&gt;The course index stays fixed. Turning OBS rotates the card, so N is at the top only when 000° is selected.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;gps-controls&quot; class=&quot;controls hidden&quot;&gt;
+    &lt;label class=&quot;control-label form-label&quot; for=&quot;gps-course-control&quot;&gt;
+      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;Selected GPS course&lt;/span&gt;&lt;span id=&quot;gps-course-value&quot; class=&quot;tabular-nums&quot;&gt;000°&lt;/span&gt;&lt;/span&gt;
+      &lt;input id=&quot;gps-course-control&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;359&quot; step=&quot;1&quot; value=&quot;0&quot;/&gt;
+    &lt;/label&gt;
+
+    &lt;label class=&quot;control-label form-label&quot; for=&quot;gps-phase-control&quot;&gt;
+      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;CDI scale&lt;/span&gt;&lt;span id=&quot;gps-scale-value&quot; class=&quot;tabular-nums&quot;&gt;±5 NM&lt;/span&gt;&lt;/span&gt;
+      &lt;select id=&quot;gps-phase-control&quot; class=&quot;form-select&quot;&gt;
+        &lt;option value=&quot;exam-enr&quot;&gt;PPL exam ENR — ±5 NM&lt;/option&gt;
+        &lt;option value=&quot;modern-enr&quot;&gt;Modern ENR — ±2 NM&lt;/option&gt;
+        &lt;option value=&quot;terminal&quot;&gt;TERM — ±1 NM&lt;/option&gt;
+        &lt;option value=&quot;approach&quot;&gt;APR — ±0.3 NM&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/label&gt;
+
+    &lt;label class=&quot;control-label form-label wide-control&quot; for=&quot;gps-error-control&quot;&gt;
+      &lt;span class=&quot;control-head&quot;&gt;&lt;span&gt;Cross-track error&lt;/span&gt;&lt;span id=&quot;gps-error-value&quot; class=&quot;tabular-nums&quot;&gt;5 NM right&lt;/span&gt;&lt;/span&gt;
+      &lt;input id=&quot;gps-error-control&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;-5&quot; max=&quot;5&quot; step=&quot;1&quot; value=&quot;5&quot;/&gt;
+    &lt;/label&gt;
+
+    &lt;label class=&quot;form-check wide-control&quot; for=&quot;gps-signal-valid&quot;&gt;
+      &lt;input id=&quot;gps-signal-valid&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot; checked/&gt;
+      &lt;span&gt;GPS guidance reliable&lt;/span&gt;
+    &lt;/label&gt;
+
+    &lt;div class=&quot;preset-row&quot;&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-gps-fraction=&quot;0&quot;&gt;Centered&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-gps-fraction=&quot;0.2&quot;&gt;One dot right&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-gps-fraction=&quot;1&quot;&gt;Full-scale right&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;p class=&quot;hint&quot;&gt;GPS uses distance, not VOR degrees. The source and active CDI scale must always be checked.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/section&gt;
 
 &lt;script&gt;
 (() =&gt; {
-  const root = document.getElementById(&#x27;gps-cdi-enroute-simulator&#x27;);
+  const root = document.getElementById(&#x27;combined-cdi-simulator&#x27;);
   if (!root) return;
 
-  const control = root.querySelector(&#x27;#cross-track-control&#x27;);
-  const value = root.querySelector(&#x27;#cross-track-value&#x27;);
-  const state = root.querySelector(&#x27;#gps-live-state&#x27;);
-  const line = root.querySelector(&#x27;#cross-track-line&#x27;);
-  const distanceLabel = root.querySelector(&#x27;#cross-track-label&#x27;);
-  const aircraft = root.querySelector(&#x27;#gps-aircraft&#x27;);
-  const sideLabel = root.querySelector(&#x27;#aircraft-side-label&#x27;);
-  const needle = root.querySelector(&#x27;#gps-cdi-needle&#x27;);
-  const needleReadout = root.querySelector(&#x27;#gps-cdi-readout&#x27;);
+  const state = root.querySelector(&#x27;#combined-state&#x27;);
+  const sourceButtons = [...root.querySelectorAll(&#x27;[data-source]&#x27;)];
+  const vorControls = root.querySelector(&#x27;#vor-controls&#x27;);
+  const gpsControls = root.querySelector(&#x27;#gps-controls&#x27;);
+  const vorMap = root.querySelector(&#x27;#vor-map&#x27;);
+  const gpsMap = root.querySelector(&#x27;#gps-map&#x27;);
+  const mapHeading = root.querySelector(&#x27;#map-heading&#x27;);
 
-  function update() {
-    const error = Number(control.value);
-    const planeY = 180 + error * 17;
-    const side = error &lt; 0 ? &#x27;left&#x27; : error &gt; 0 ? &#x27;right&#x27; : &#x27;&#x27;;
-    const needleX = 230 - error * 20;
+  const obsControl = root.querySelector(&#x27;#combined-obs-control&#x27;);
+  const radialControl = root.querySelector(&#x27;#combined-radial-control&#x27;);
+  const obsValue = root.querySelector(&#x27;#combined-obs-value&#x27;);
+  const radialValue = root.querySelector(&#x27;#combined-radial-value&#x27;);
+  const vorSignal = root.querySelector(&#x27;#vor-signal-valid&#x27;);
+  const selectedCourse = root.querySelector(&#x27;#vor-selected-course&#x27;);
+  const courseArrow = root.querySelector(&#x27;#vor-course-arrow&#x27;);
+  const aircraftRadial = root.querySelector(&#x27;#vor-aircraft-radial&#x27;);
+  const vorAircraft = root.querySelector(&#x27;#vor-aircraft&#x27;);
 
-    aircraft.setAttribute(&#x27;transform&#x27;, `translate(270 ${planeY}) rotate(90)`);
-    line.setAttribute(&#x27;y2&#x27;, String(planeY));
-    distanceLabel.setAttribute(&#x27;y&#x27;, String(error === 0 ? 160 : 180 + error * 8.5 + (error &lt; 0 ? -8 : 8)));
-    distanceLabel.textContent = error === 0 ? &#x27;ON COURSE&#x27; : `${Math.abs(error)} NM`;
-    sideLabel.setAttribute(&#x27;y&#x27;, String(error &lt; 0 ? planeY - 38 : planeY + 46));
-    sideLabel.textContent = error === 0 ? &#x27;Aircraft on course&#x27; : `${Math.abs(error)} NM ${side} of course`;
+  const gpsCourseControl = root.querySelector(&#x27;#gps-course-control&#x27;);
+  const gpsCourseValue = root.querySelector(&#x27;#gps-course-value&#x27;);
+  const gpsPhaseControl = root.querySelector(&#x27;#gps-phase-control&#x27;);
+  const gpsScaleValue = root.querySelector(&#x27;#gps-scale-value&#x27;);
+  const gpsErrorControl = root.querySelector(&#x27;#gps-error-control&#x27;);
+  const gpsErrorValue = root.querySelector(&#x27;#gps-error-value&#x27;);
+  const gpsSignal = root.querySelector(&#x27;#gps-signal-valid&#x27;);
+  const gpsCrossTrack = root.querySelector(&#x27;#gps-cross-track-line&#x27;);
+  const gpsDistanceLabel = root.querySelector(&#x27;#gps-distance-label&#x27;);
+  const gpsAircraft = root.querySelector(&#x27;#gps-aircraft&#x27;);
+  const gpsSideLabel = root.querySelector(&#x27;#gps-side-label&#x27;);
 
-    needle.setAttribute(&#x27;x1&#x27;, String(needleX));
-    needle.setAttribute(&#x27;x2&#x27;, String(needleX));
+  const ticksGroup = root.querySelector(&#x27;#course-card-ticks&#x27;);
+  const labelsGroup = root.querySelector(&#x27;#course-card-labels&#x27;);
+  const sourceLabel = root.querySelector(&#x27;#source-label&#x27;);
+  const senseGroup = root.querySelector(&#x27;#sense-group&#x27;);
+  const senseArrow = root.querySelector(&#x27;#sense-arrow&#x27;);
+  const senseLabel = root.querySelector(&#x27;#sense-label&#x27;);
+  const navFlag = root.querySelector(&#x27;#nav-flag&#x27;);
+  const needleGroup = root.querySelector(&#x27;#cdi-needle-group&#x27;);
+  const cdiNeedle = root.querySelector(&#x27;#shared-cdi-needle&#x27;);
+  const cdiHead = root.querySelector(&#x27;#shared-cdi-head&#x27;);
+  const cdiTail = root.querySelector(&#x27;#shared-cdi-tail&#x27;);
+  const instrumentReadout = root.querySelector(&#x27;#instrument-readout&#x27;);
+  const instrumentScale = root.querySelector(&#x27;#instrument-scale&#x27;);
 
-    if (error === 0) {
-      value.textContent = &#x27;0 NM · on course&#x27;;
-      state.textContent = &#x27;Aircraft on course → CDI centered&#x27;;
-      needleReadout.textContent = &#x27;CENTERED&#x27;;
+  const svgNS = &#x27;http://www.w3.org/2000/svg&#x27;;
+  const cardCx = 240;
+  const cardCy = 225;
+  const tickElements = [];
+  const labelElements = [];
+  let source = &#x27;vor&#x27;;
+
+  const gpsScales = {
+    &#x27;exam-enr&#x27;: {scale: 5, label: &#x27;GPS ENR&#x27;, decimals: 1},
+    &#x27;modern-enr&#x27;: {scale: 2, label: &#x27;GPS ENR&#x27;, decimals: 1},
+    terminal: {scale: 1, label: &#x27;GPS TERM&#x27;, decimals: 1},
+    approach: {scale: 0.3, label: &#x27;GPS APR&#x27;, decimals: 2}
+  };
+
+  function normalize(value) {
+    return ((Math.round(value) % 360) + 360) % 360;
+  }
+
+  function bearing(value) {
+    return String(normalize(value)).padStart(3, &#x27;0&#x27;) + &#x27;°&#x27;;
+  }
+
+  function signedDifference(a, b) {
+    return ((a - b + 540) % 360) - 180;
+  }
+
+  function point(bearingValue, radius, cx = 240, cy = 220) {
+    const radians = bearingValue * Math.PI / 180;
+    return {x: cx + Math.sin(radians) * radius, y: cy - Math.cos(radians) * radius};
+  }
+
+  function setLine(line, start, end) {
+    line.setAttribute(&#x27;x1&#x27;, start.x.toFixed(1));
+    line.setAttribute(&#x27;y1&#x27;, start.y.toFixed(1));
+    line.setAttribute(&#x27;x2&#x27;, end.x.toFixed(1));
+    line.setAttribute(&#x27;y2&#x27;, end.y.toFixed(1));
+  }
+
+  for (let value = 0; value &lt; 360; value += 5) {
+    const line = document.createElementNS(svgNS, &#x27;line&#x27;);
+    line.setAttribute(&#x27;class&#x27;, value % 30 === 0 ? &#x27;card-tick-major&#x27; : &#x27;card-tick&#x27;);
+    ticksGroup.appendChild(line);
+    tickElements.push({value, line});
+  }
+
+  for (let value = 0; value &lt; 360; value += 30) {
+    const text = document.createElementNS(svgNS, &#x27;text&#x27;);
+    text.setAttribute(&#x27;class&#x27;, &#x27;card-label&#x27;);
+    text.setAttribute(&#x27;text-anchor&#x27;, &#x27;middle&#x27;);
+    text.setAttribute(&#x27;dominant-baseline&#x27;, &#x27;middle&#x27;);
+    text.textContent = value === 0 ? &#x27;N&#x27; : value === 90 ? &#x27;E&#x27; : value === 180 ? &#x27;S&#x27; : value === 270 ? &#x27;W&#x27; : String(value / 10);
+    labelsGroup.appendChild(text);
+    labelElements.push({value, text});
+  }
+
+  function drawCourseCard(course) {
+    tickElements.forEach(({value, line}) =&gt; {
+      const angle = normalize(value - course);
+      const outer = point(angle, 184, cardCx, cardCy);
+      const inner = point(angle, value % 30 === 0 ? 165 : 173, cardCx, cardCy);
+      setLine(line, outer, inner);
+    });
+    labelElements.forEach(({value, text}) =&gt; {
+      const position = point(normalize(value - course), 147, cardCx, cardCy);
+      text.setAttribute(&#x27;x&#x27;, position.x.toFixed(1));
+      text.setAttribute(&#x27;y&#x27;, position.y.toFixed(1));
+    });
+  }
+
+  function setNeedle(offset, usable = true) {
+    const transform = `translate(${offset.toFixed(1)} 0)`;
+    cdiNeedle.setAttribute(&#x27;transform&#x27;, transform);
+    cdiHead.setAttribute(&#x27;transform&#x27;, transform);
+    cdiTail.setAttribute(&#x27;transform&#x27;, transform);
+    needleGroup.style.opacity = usable ? &#x27;1&#x27; : &#x27;.28&#x27;;
+  }
+
+  function setSense(flag) {
+    if (flag === &#x27;OFF&#x27;) {
+      senseGroup.classList.add(&#x27;hidden&#x27;);
+      return;
+    }
+    senseGroup.classList.remove(&#x27;hidden&#x27;);
+    senseLabel.textContent = flag;
+    senseArrow.setAttribute(&#x27;points&#x27;, flag === &#x27;TO&#x27; ? &#x27;330,126 318,149 342,149&#x27; : &#x27;330,181 318,158 342,158&#x27;);
+  }
+
+  function setSignalValid(valid) {
+    navFlag.classList.toggle(&#x27;hidden&#x27;, valid);
+  }
+
+  function updateVor() {
+    const obs = Number(obsControl.value);
+    const radial = Number(radialControl.value);
+    const valid = vorSignal.checked;
+    const difference = signedDifference(radial, obs);
+    const radians = difference * Math.PI / 180;
+    const courseError = Math.asin(Math.sin(radians)) * 180 / Math.PI;
+    const ambiguous = Math.abs(Math.abs(difference) - 90) &lt;= 1;
+    const flag = ambiguous ? &#x27;OFF&#x27; : (Math.cos(radians) &gt;= 0 ? &#x27;FROM&#x27; : &#x27;TO&#x27;);
+    const needleDegrees = Math.max(-10, Math.min(10, -courseError));
+
+    obsValue.textContent = bearing(obs);
+    radialValue.textContent = bearing(radial);
+    sourceLabel.textContent = &#x27;VOR&#x27;;
+    instrumentScale.textContent = &#x27;VOR: 2° per dot · 10° full scale&#x27;;
+    drawCourseCard(obs);
+    setSense(valid ? flag : &#x27;OFF&#x27;);
+    setSignalValid(valid);
+    setNeedle(needleDegrees * 10, valid &amp;&amp; !ambiguous);
+
+    const forward = point(obs, 150);
+    const backward = point(normalize(obs + 180), 150);
+    setLine(selectedCourse, backward, forward);
+    const arrowTip = point(obs, 124);
+    const arrowBase = point(obs, 103);
+    const angle = obs * Math.PI / 180;
+    const normalX = Math.cos(angle) * 10;
+    const normalY = Math.sin(angle) * 10;
+    courseArrow.setAttribute(&#x27;points&#x27;, `${arrowTip.x.toFixed(1)},${arrowTip.y.toFixed(1)} ${(arrowBase.x + normalX).toFixed(1)},${(arrowBase.y + normalY).toFixed(1)} ${(arrowBase.x - normalX).toFixed(1)},${(arrowBase.y - normalY).toFixed(1)}`);
+    setLine(aircraftRadial, {x: 240, y: 220}, point(radial, 140));
+    const aircraftPoint = point(radial, 169);
+    vorAircraft.setAttribute(&#x27;transform&#x27;, `translate(${aircraftPoint.x.toFixed(1)} ${aircraftPoint.y.toFixed(1)})`);
+
+    if (!valid) {
+      state.textContent = &#x27;VOR signal unreliable → NAV flag displayed&#x27;;
+      instrumentReadout.textContent = &#x27;DO NOT USE CDI&#x27;;
+    } else if (ambiguous) {
+      state.textContent = `${bearing(obs)} OBS and ${bearing(radial)} radial are 90° apart → TO/FROM ambiguous`;
+      instrumentReadout.textContent = &#x27;TO/FROM AMBIGUOUS&#x27;;
+    } else if (Math.abs(courseError) &lt; 0.5) {
+      state.textContent = `${bearing(obs)} OBS · ${bearing(radial)} radial → CDI centered · ${flag}`;
+      instrumentReadout.textContent = `CDI CENTERED · ${flag}`;
     } else {
-      const needleSide = error &gt; 0 ? &#x27;LEFT&#x27; : &#x27;RIGHT&#x27;;
-      const scaleText = Math.abs(error) === 5 ? &#x27;FULL-SCALE&#x27; : `${Math.abs(error)} DOT${Math.abs(error) === 1 ? &#x27;&#x27; : &#x27;S&#x27;}`;
-      value.textContent = `${Math.abs(error).toFixed(1)} NM ${side}`;
-      state.textContent = `${Math.abs(error)} NM ${side.toUpperCase()} of course → CDI ${scaleText} ${needleSide}`;
-      needleReadout.textContent = `${scaleText} ${needleSide}`;
+      const side = needleDegrees &lt; 0 ? &#x27;LEFT&#x27; : &#x27;RIGHT&#x27;;
+      const amount = Math.abs(courseError) &gt;= 10 ? &#x27;FULL&#x27; : `${Math.abs(courseError).toFixed(0)}°`;
+      state.textContent = `${bearing(obs)} OBS · ${bearing(radial)} radial → CDI ${amount} ${side} · ${flag}`;
+      instrumentReadout.textContent = `CDI ${amount} ${side} · ${flag}`;
     }
   }
 
-  control.addEventListener(&#x27;input&#x27;, update);
-  root.querySelectorAll(&#x27;[data-error]&#x27;).forEach((button) =&gt; {
+  function currentGpsScale() {
+    return gpsScales[gpsPhaseControl.value];
+  }
+
+  function updateGpsScale(resetError = false) {
+    const config = currentGpsScale();
+    gpsErrorControl.min = String(-config.scale);
+    gpsErrorControl.max = String(config.scale);
+    gpsErrorControl.step = String(config.scale / 5);
+    if (resetError) gpsErrorControl.value = String(config.scale);
+    gpsScaleValue.textContent = `±${config.scale} NM`;
+  }
+
+  function updateGps() {
+    const course = Number(gpsCourseControl.value);
+    const error = Number(gpsErrorControl.value);
+    const valid = gpsSignal.checked;
+    const config = currentGpsScale();
+    const fraction = Math.max(-1, Math.min(1, error / config.scale));
+    const dots = Math.abs(fraction) * 5;
+    const side = error &lt; 0 ? &#x27;left&#x27; : error &gt; 0 ? &#x27;right&#x27; : &#x27;&#x27;;
+    const needleSide = error &gt; 0 ? &#x27;LEFT&#x27; : error &lt; 0 ? &#x27;RIGHT&#x27; : &#x27;&#x27;;
+
+    gpsCourseValue.textContent = bearing(course);
+    gpsErrorValue.textContent = error === 0 ? &#x27;0 NM · on course&#x27; : `${Math.abs(error).toFixed(config.decimals)} NM ${side}`;
+    sourceLabel.textContent = config.label;
+    instrumentScale.textContent = `Full scale ±${config.scale} NM · each dot ${(config.scale / 5).toFixed(config.decimals)} NM`;
+    drawCourseCard(course);
+    setSense(valid ? &#x27;TO&#x27; : &#x27;OFF&#x27;);
+    setSignalValid(valid);
+    setNeedle(-fraction * 100, valid);
+
+    const planeY = 220 + fraction * 90;
+    gpsAircraft.setAttribute(&#x27;transform&#x27;, `translate(285 ${planeY.toFixed(1)}) rotate(90)`);
+    gpsCrossTrack.setAttribute(&#x27;y2&#x27;, planeY.toFixed(1));
+    gpsDistanceLabel.setAttribute(&#x27;y&#x27;, (220 + fraction * 45 + (fraction &lt; 0 ? -10 : 18)).toFixed(1));
+    gpsDistanceLabel.textContent = error === 0 ? &#x27;ON COURSE&#x27; : `${Math.abs(error).toFixed(config.decimals)} NM`;
+    gpsSideLabel.setAttribute(&#x27;y&#x27;, (planeY + (fraction &lt; 0 ? -38 : 48)).toFixed(1));
+    gpsSideLabel.textContent = error === 0 ? &#x27;Aircraft on desired track&#x27; : `${Math.abs(error).toFixed(config.decimals)} NM ${side} of track`;
+
+    if (!valid) {
+      state.textContent = &#x27;GPS guidance unreliable → NAV flag displayed&#x27;;
+      instrumentReadout.textContent = &#x27;DO NOT USE CDI&#x27;;
+    } else if (error === 0) {
+      state.textContent = `${bearing(course)} desired track · aircraft on course → CDI centered`;
+      instrumentReadout.textContent = &#x27;CDI CENTERED · TO&#x27;;
+    } else {
+      const scaleText = Math.abs(fraction) &gt;= 1 ? &#x27;FULL&#x27; : `${dots.toFixed(1)} DOT${Math.abs(dots - 1) &lt; 0.01 ? &#x27;&#x27; : &#x27;S&#x27;}`;
+      state.textContent = `${Math.abs(error).toFixed(config.decimals)} NM ${side} of track → CDI ${scaleText} ${needleSide}`;
+      instrumentReadout.textContent = `CDI ${scaleText} ${needleSide}`;
+    }
+  }
+
+  function showSource(nextSource) {
+    source = nextSource;
+    sourceButtons.forEach((button) =&gt; button.setAttribute(&#x27;aria-pressed&#x27;, String(button.dataset.source === source)));
+    vorControls.classList.toggle(&#x27;hidden&#x27;, source !== &#x27;vor&#x27;);
+    gpsControls.classList.toggle(&#x27;hidden&#x27;, source !== &#x27;gps&#x27;);
+    vorMap.classList.toggle(&#x27;hidden&#x27;, source !== &#x27;vor&#x27;);
+    gpsMap.classList.toggle(&#x27;hidden&#x27;, source !== &#x27;gps&#x27;);
+    mapHeading.textContent = source === &#x27;vor&#x27; ? &#x27;Aircraft position&#x27; : &#x27;GPS cross-track position&#x27;;
+    if (source === &#x27;vor&#x27;) updateVor(); else updateGps();
+  }
+
+  sourceButtons.forEach((button) =&gt; button.addEventListener(&#x27;click&#x27;, () =&gt; showSource(button.dataset.source)));
+  obsControl.addEventListener(&#x27;input&#x27;, updateVor);
+  radialControl.addEventListener(&#x27;input&#x27;, updateVor);
+  vorSignal.addEventListener(&#x27;change&#x27;, updateVor);
+  gpsCourseControl.addEventListener(&#x27;input&#x27;, updateGps);
+  gpsErrorControl.addEventListener(&#x27;input&#x27;, updateGps);
+  gpsSignal.addEventListener(&#x27;change&#x27;, updateGps);
+  gpsPhaseControl.addEventListener(&#x27;change&#x27;, () =&gt; {
+    updateGpsScale(true);
+    updateGps();
+  });
+
+  root.querySelectorAll(&#x27;[data-vor-obs][data-vor-radial]&#x27;).forEach((button) =&gt; {
     button.addEventListener(&#x27;click&#x27;, () =&gt; {
-      control.value = button.dataset.error;
-      update();
+      obsControl.value = button.dataset.vorObs;
+      radialControl.value = button.dataset.vorRadial;
+      vorSignal.checked = true;
+      updateVor();
     });
   });
 
-  update();
+  root.querySelectorAll(&#x27;[data-gps-fraction]&#x27;).forEach((button) =&gt; {
+    button.addEventListener(&#x27;click&#x27;, () =&gt; {
+      gpsErrorControl.value = String(currentGpsScale().scale * Number(button.dataset.gpsFraction));
+      gpsSignal.checked = true;
+      updateGps();
+    });
+  });
+
+  updateGpsScale(true);
+  showSource(&#x27;vor&#x27;);
 })();
 &lt;/script&gt;
 
